@@ -1,0 +1,106 @@
+.container {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 15px;
+  height: 100%;
+  /* font color  */
+}
+
+.container img {
+  width: 50px;
+}
+
+.container p {
+  color: #000000;
+}
+
+.container .left,
+.container .right {
+  display: flex;
+  align-items: center;
+}
+
+/* start left  */
+
+.container .left .search-bar {
+  margin-left: 15px;
+  position: relative;
+}
+
+.container .left .search-bar input {
+  position: relative;
+  border: none;
+  background-color: #ececec;
+  border-radius: 30px;
+  padding: 12px 15px 12px 40px;
+  width: 200px;
+}
+
+.container .left .search-bar input:focus {
+  outline: none;
+}
+
+.container .left .search-bar i {
+  position: absolute;
+  z-index: 1000;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* adjusting the placeholder text  */
+.container .left .search-bar input::placeholder {
+  color: #000000;
+  position: absolute;
+  padding-left: 5px; /* Adjust this value to move the placeholder text */
+  left: 35px;
+  line-height: 30px;
+}
+
+.container .left .search-bar input:focus::placeholder {
+  color: transparent;
+}
+
+/* end left  */
+
+/* start right  */
+
+.container .right {
+}
+
+/* justify the size of the child to be the same as avatar  */
+.container .right .child {
+  background-color: #ececec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  margin: 0px 5px;
+}
+
+.container .right .child:hover {
+  background-color: #c3c3c3;
+}
+
+.container .right .child i {
+  color: #000000;
+}
+
+/* size of the avatar  */
+.container .right .child img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.container .right .child img:hover {
+  opacity: 0.7; /* Make it slightly transparent */
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+/* end right  */
