@@ -7,11 +7,11 @@ import { IconContext } from "react-icons/lib";
 function App() {
   return (
     <>
-      <IconContext.Provider value={{ color: "#000000", className:"icon" }}> 
+      <IconContext.Provider value={{ color: "#000000", className: "icon" }}>
         <Header></Header>
         {/* create a margin-top of 60px please */}
         <PersonalWallBody></PersonalWallBody>
-      </IconContext.Provider> 
+      </IconContext.Provider>
     </>
   );
 }

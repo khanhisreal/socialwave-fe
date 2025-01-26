@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Header.css"; 
+import "./Header.css";
 
 import logo from "../../assets/images/Header/socialwave_logo.png";
 import dummyProfilePic from "../../assets/images/Header/dummy_avatar.png";
