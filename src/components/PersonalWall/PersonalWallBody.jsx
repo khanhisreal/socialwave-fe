@@ -1,3 +1,5 @@
+import "./PersonalWallBody.css";
+
 export default function PersonalWallBody() {
   return (
     <>
