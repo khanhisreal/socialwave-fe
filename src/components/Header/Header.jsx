@@ -1,10 +1,14 @@
 import { useState } from "react";
-import "./Header.css";
 
+import styles from "./Header.module.css";
 import logo from "../../assets/images/Header/socialwave_logo.png";
 import dummyProfilePic from "../../assets/images/Header/dummy_avatar.png";
-import ButtonNavigation from "./ButtonNavigation";
+
+import HeaderIconBuilder from "./HeaderIconBuilder";
 import Menu from "./Menu/Menu";
+import Message from "./Message/Message";
+import Notification from "./Notification/Notification";
+import Account from "./Account/Account";
 
 // Importing icons from react-icons/md
 import { MdApps, MdMessage } from "react-icons/md";
@@ -15,24 +19,6 @@ import { FaBell } from "react-icons/fa";
 // Importing icons from react-icons/fa6
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const message = (
-  <div className="message">
-    <p>Message</p>
-  </div>
-);
-
-const notification = (
-  <div className="notification">
-    <p>Notification</p>
-  </div>
-);
-
-const account = (
-  <div className="account">
-    <p>Account</p>
-  </div>
-);
-
 export default function Header() {
   const [data, setData] = useState("message");
 
@@ -42,53 +28,57 @@ export default function Header() {
   }
 
   return (
-    <div className="container">
-      <div className="left">
+    <div className={styles.container}>
+      <div className={styles.left}>
         <a href="">
           <img src={logo} alt="socialwave logo" />
         </a>
-        <div className="search-bar">
-          <FaMagnifyingGlass />
+        <div className={styles.searchBar}>
+          <FaMagnifyingGlass className={styles.icon} />
           <input type="text" placeholder="Search Socialwave" />
         </div>
       </div>
-      <div className="right">
+      <div className={styles.right}>
         {/* menu button  */}
-        <ButtonNavigation
+        <HeaderIconBuilder
           buttonType={"menu"}
           triggerClick={assignData}
-          buttonClass="menu-parent"
+          // This shit is a prop, don't try to change it to module css!
+          buttonClass={"menuParent"}
         >
           <MdApps />
           {data === "menu" && <Menu />}
-        </ButtonNavigation>
+        </HeaderIconBuilder>
         {/* message button  */}
-        <ButtonNavigation
+        <HeaderIconBuilder
           buttonType={"message"}
           triggerClick={assignData}
-          buttonClass={"message-parent"}
+          // This shit is a prop, don't try to change it to module css!
+          buttonClass={"messageParent"}
         >
           <MdMessage />
-          {data === "message" && message}
-        </ButtonNavigation>
+          {data === "message" && <Message />}
+        </HeaderIconBuilder>
         {/* notification button  */}
-        <ButtonNavigation
+        <HeaderIconBuilder
           buttonType={"notification"}
           triggerClick={assignData}
-          buttonClass={"notification-parent"}
+          // This shit is a prop, don't try to change it to module css!
+          buttonClass={"notificationParent"}
         >
           <FaBell />
-          {data === "notification" && notification}
-        </ButtonNavigation>
+          {data === "notification" && <Notification />}
+        </HeaderIconBuilder>
         {/* account button  */}
-        <ButtonNavigation
+        <HeaderIconBuilder
           buttonType={"account"}
           triggerClick={assignData}
-          buttonClass={"account-parent"}
+          // This shit is a prop, don't try to change it to module css!
+          buttonClass={"accountParent"}
         >
           <img src={dummyProfilePic} alt="" />
-          {data === "account" && account}
-        </ButtonNavigation>
+          {data === "account" && <Account />}
+        </HeaderIconBuilder>
       </div>
     </div>
   );

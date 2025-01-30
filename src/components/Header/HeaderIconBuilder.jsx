@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import styles from "./Header.module.css";
 
-export default function ButtonNavigation({
+export default function HeaderIconBuilder({
   children,
   buttonType,
   triggerClick,
@@ -8,7 +9,7 @@ export default function ButtonNavigation({
 }) {
   return (
     <div
-      className={`child ${buttonClass}`}
+      className={`${styles.child} ${styles[buttonClass]}`}
       href="#"
       // call the state that has been lifted up to the parent component
       onClick={() => {
@@ -21,7 +22,7 @@ export default function ButtonNavigation({
   );
 }
 
-ButtonNavigation.propTypes = {
+HeaderIconBuilder.propTypes = {
   children: PropTypes.node.isRequired, // Ensures "children" is passed and is valid React node(s)
   buttonType: PropTypes.string.isRequired, // Ensures "buttonType" is passed and is a string
   triggerClick: PropTypes.func.isRequired, // Ensures "triggerClick" is passed and is a function

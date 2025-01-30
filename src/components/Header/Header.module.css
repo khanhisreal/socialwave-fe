@@ -1,0 +1,475 @@
+.container {
+  background-color: rgb(248, 248, 248);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+  padding: 8px 15px;
+  width: 100vw;
+  position: fixed;
+  /* fixed height to create a gap below for the content  */
+  height: 60px;
+}
+
+.container img {
+  width: 50px;
+}
+
+.container p {
+  color: #000000;
+}
+
+.container .left,
+.container .right {
+  display: flex;
+  align-items: center;
+}
+
+/* start left  */
+
+.container .left .searchBar {
+  margin-left: 15px;
+  position: relative;
+}
+
+.container .left .searchBar input {
+  border: none;
+  background-color: #ececec;
+  border-radius: 30px;
+  padding: 12px 15px 12px 40px;
+  width: 200px;
+}
+
+.container .left .searchBar input:focus {
+  outline: none;
+}
+
+.container .left .searchBar .icon {
+  position: absolute;
+  z-index: 1000;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* adjusting the placeholder text  */
+.container .left .searchBar input::placeholder {
+  color: #000000;
+  position: absolute;
+  padding-left: 5px; /* Adjust this value to move the placeholder text */
+  left: 35px;
+  line-height: 30px;
+  font-family: "Paragraph";
+}
+
+/* end left  */
+
+/* start right  */
+
+/* justify the size of the child to be the same as avatar  */
+.container .right .child {
+  background-color: #ececec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  margin: 0px 5px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); /* Add shadow to the child */
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease; /* Smooth transition for background and shadow */
+  cursor: pointer;
+}
+
+.container .right .child:hover {
+  background-color: #c3c3c3;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+/* size of the avatar  */
+.container .right .child img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.container .right .child img:hover {
+  opacity: 0.7; /* Make it slightly transparent */
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.container .right .menuParent,
+.container .right .notificationParent,
+.container .right .messageParent,
+.container .right .accountParent {
+  position: relative;
+}
+
+.container .right .menuParent .menu,
+.container .right .messageParent .message,
+.container .right .notificationParent .notification,
+.container .right .accountParent .account {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  padding: 10px;
+  background-color: #eeeeee;
+  cursor: pointer;
+  /* for the whole menu - disable */
+  pointer-events: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container .right .menuParent .menu h3,
+.container .right .messageParent .message h3,
+.container .right .notificationParent .notification h3,
+.container .right .accountParent .account h3 {
+  color: black;
+  font-weight: bolder;
+}
+
+/* menu  */
+.container .right .menuParent .menu .menuContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.container .right .menuParent .menu .menuContainer .menuLeft,
+.container .right .menuParent .menu .menuContainer .menuRight {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 5px;
+}
+
+.container .right .menuParent .menu .menuContainer .menuRight {
+  height: 100%;
+}
+
+.container .right .menuParent .menu .menuContainer .menuLeft .searchBar {
+  position: relative;
+  /* enable the pointer event for the search bar  */
+  pointer-events: fill;
+}
+
+.container .right .menuParent .menu .menuContainer .menuLeft .searchBar input {
+  border: none;
+  background-color: #ececec;
+  border-radius: 30px;
+  padding: 12px 15px 12px 40px;
+  width: 100%;
+}
+
+.container
+  .right
+  .menuParent
+  .menu
+  .menuContainer
+  .menuLeft
+  .searchBar
+  input:focus {
+  outline: none;
+}
+
+.container .right .menuParent .menu .menuContainer .menuLeft .searchBar .icon {
+  position: absolute;
+  z-index: 1000;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.container .right .menuParent .menu .menuContainer .menuLeft .social {
+  margin-top: 15px;
+  height: 320px;
+  width: 270px;
+  overflow: auto;
+  /* enable pointer for the social buttons  */
+  pointer-events: fill;
+}
+
+.container .right .menuParent .menu .menuContainer .menuLeft .social a {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  width: 100%;
+}
+
+.container .right .menuParent .menu .menuContainer .menuLeft .social h4,
+.container .right .menuParent .menu .menuContainer .menuRight h4 {
+  color: black;
+}
+
+.container .right .menuParent .menu .menuContainer .menuLeft .social a:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.container .right .menuParent .menu .menuContainer .menuLeft .social a .icon {
+  margin-right: 15px;
+  width: 20px;
+}
+
+.container .right .menuParent .menu .menuContainer .menuRight .create a {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  padding: 10px 10px;
+  width: 150px;
+  border-radius: 5px;
+  /* enable pointer event for create buttons  */
+  pointer-events: fill;
+}
+
+.container .right .menuParent .menu .menuContainer .menuRight .create a:hover {
+  background-color: #f0f0f0;
+}
+
+.container .right .menuParent .menu .menuContainer .menuRight .create a .icon {
+  margin-right: 10px;
+  width: 20px;
+}
+
+/* message  */
+.container .right .messageParent .message .headingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container .right .messageParent .message .headingContainer a {
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  pointer-events: all;
+  transition: background-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+.container .right .messageParent .message .headingContainer a:hover {
+  background-color: #c3c3c3;
+}
+
+.container .right .messageParent .message .headingContainer a .icon {
+  width: 100%;
+  height: 100%;
+}
+
+.container .right .messageParent .message .messageContainer {
+  width: 340px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 5px;
+}
+
+.container .right .messageParent .message .messageContainer .searchBar {
+  position: relative;
+  /* enable the pointer event for the search bar  */
+  pointer-events: fill;
+}
+
+.container .right .messageParent .message .messageContainer .searchBar input {
+  border: none;
+  background-color: #ececec;
+  border-radius: 30px;
+  padding: 12px 15px 12px 40px;
+  width: 100%;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .searchBar
+  input:focus {
+  outline: none;
+}
+
+.container .right .messageParent .message .messageContainer .searchBar .icon {
+  position: absolute;
+  z-index: 1000;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.container .right .messageParent .message .messageContainer .empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container .right .messageParent .message .messageContainer .empty img {
+  width: 80%;
+}
+
+.container .right .messageParent .message .messageContainer .listMessages {
+  margin-top: 10px;
+  height: 400px;
+  overflow: auto;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* enable pointer event so we can click  */
+  pointer-events: all;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage:hover {
+  background-color: #ececec;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage
+  .userAvatar {
+  width: 20%;
+  border-radius: 50%;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage
+  .userAvatar
+  img {
+  background-color: #c3c3c3;
+  width: 60px;
+  height: 60px;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage
+  .conversation {
+  width: 75%;
+  position: relative;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage
+  .conversation
+  h3,
+p,
+b {
+  font-size: 95%;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage
+  .conversation
+  p {
+  margin: 3px 0px;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage
+  .conversation
+  .status {
+  font-size: 70%;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage
+  .conversation
+  .activeStatus {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage
+  .conversation
+  .activeStatus
+  .green {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: lightgreen;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage
+  .conversation
+  .activeStatus
+  .red {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: lightcoral;
+}
+
+/* notification  */
+
+/* account  */
+
+/* end right  */

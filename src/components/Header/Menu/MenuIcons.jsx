@@ -11,10 +11,11 @@ import { IoMdPersonAdd } from "react-icons/io";
 import { FaNewspaper } from "react-icons/fa6";
 
 import MenuIconsBuilder from "./MenuIconsBuilder";
+import styles from "../../Header/Header.module.css";
 
 const friends = (
   <MenuIconsBuilder
-    icon={<FaUserFriends />}
+    icon={<FaUserFriends className={styles.icon} />}
     title="Friends"
     description="Find your friends on Socialwave"
   />
@@ -22,7 +23,7 @@ const friends = (
 
 const newsFeed = (
   <MenuIconsBuilder
-    icon={<FaNewspaper />}
+    icon={<FaNewspaper className={styles.icon} />}
     title="News feed"
     description="See what's happening on Socialwave"
   />
@@ -30,7 +31,7 @@ const newsFeed = (
 
 const saved = (
   <MenuIconsBuilder
-    icon={<FaBookmark />}
+    icon={<FaBookmark className={styles.icon} />}
     title="Saved"
     description="View your saved posts on your news feed"
   />
@@ -38,7 +39,7 @@ const saved = (
 
 const messenger = (
   <MenuIconsBuilder
-    icon={<TbBrandMessengerFilled />}
+    icon={<TbBrandMessengerFilled className={styles.icon} />}
     title="Messenger"
     description="Connect with your friends"
   />
@@ -46,7 +47,7 @@ const messenger = (
 
 const friendRequests = (
   <MenuIconsBuilder
-    icon={<IoMdPersonAdd />}
+    icon={<IoMdPersonAdd className={styles.icon} />}
     title="Friend requests"
     description="View your friend requests"
   />

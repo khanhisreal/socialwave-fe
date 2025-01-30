@@ -13,6 +13,7 @@ import { FaBookOpen } from "react-icons/fa";
 import { MdEmojiEvents } from "react-icons/md";
 
 import menuIcons from "./MenuIcons";
+import styles from "../../Header/Header.module.css";
 import noResultImage from "../../../assets/images/Header/menu.webp";
 
 const noResults = (
@@ -37,12 +38,12 @@ export default function Menu() {
   );
 
   return (
-    <div className="menu">
+    <div className={styles.menu}>
       <h3>Menu</h3>
-      <div className="menu-container">
-        <div className="menu-left">
-          <div className="search-bar">
-            <FaMagnifyingGlass />
+      <div className={styles.menuContainer}>
+        <div className={styles.menuLeft}>
+          <div className={styles.searchBar}>
+            <FaMagnifyingGlass className={styles.icon} />
             <input
               type="text"
               placeholder="Search menu"
@@ -52,7 +53,7 @@ export default function Menu() {
               onClick={(e) => e.stopPropagation()}
             />
           </div>
-          <div className="social">
+          <div className={styles.social}>
             <h3>Social</h3>
             {/* Show this if there are no results  */}
             {filteredIcons.length === 0 && noResults}
@@ -62,25 +63,28 @@ export default function Menu() {
             ))}
           </div>
         </div>
-        <div className="menu-right">
+        <div className={styles.menuRight}>
           <h4>Create</h4>
-          <div className="create">
-            <a href="">
-              <IoIosCreate />
-              <div className="create-description">
+          <div className={styles.create}>
+            <a href="#">
+              <IoIosCreate className={styles.icon} />
+              <div className="createDescription">
                 <h4>Post</h4>
+                <p>Create a new post</p>
               </div>
             </a>
-            <a href="">
-              <FaBookOpen />
-              <div className="create-description">
+            <a href="#">
+              <FaBookOpen className={styles.icon} />
+              <div className="createDescription">
                 <h4>Story</h4>
+                <p>Share a new story</p>
               </div>
             </a>
-            <a href="">
-              <MdEmojiEvents />
-              <div className="create-description">
+            <a href="#">
+              <MdEmojiEvents className={styles.icon} />
+              <div className="createDescription">
                 <h4>Life event</h4>
+                <p>Share an achievement</p>
               </div>
             </a>
           </div>
