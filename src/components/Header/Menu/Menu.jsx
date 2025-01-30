@@ -1,15 +1,11 @@
 import { Fragment, useState } from "react";
 
-// Importing icons from react-icons/fa6
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-// Importing icons from react-icons/io
 import { IoIosCreate } from "react-icons/io";
 
-// Importing icons from react-icons/fa
 import { FaBookOpen } from "react-icons/fa";
 
-// Importing icons from react-icons/md
 import { MdEmojiEvents } from "react-icons/md";
 
 import menuIcons from "./MenuIcons";
