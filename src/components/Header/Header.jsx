@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./Header.module.css";
 import logo from "../../assets/images/Header/socialwave_logo.png";
 import dummyProfilePic from "../../assets/images/Header/dummy_avatar.png";
+import messageIndicator from "./MessageIndicator";
 
 import HeaderIconBuilder from "./HeaderIconBuilder";
 import Menu from "./Menu/Menu";
@@ -10,17 +11,12 @@ import Message from "./Message/Message";
 import Notification from "./Notification/Notification";
 import Account from "./Account/Account";
 
-// Importing icons from react-icons/md
 import { MdApps, MdMessage } from "react-icons/md";
-
-// Importing icons from react-icons/fa
 import { FaBell } from "react-icons/fa";
-
-// Importing icons from react-icons/fa6
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export default function Header() {
-  const [data, setData] = useState("message");
+  const [data, setData] = useState("notification");
 
   function assignData(value) {
     //if the value is the same as the current data, set data to null
@@ -58,6 +54,11 @@ export default function Header() {
         >
           <MdMessage />
           {data === "message" && <Message />}
+          {!data && (
+            <div className={styles.messageIndicator}>
+              {messageIndicator > 99 ? 99 + "+" : messageIndicator}
+            </div>
+          )}
         </HeaderIconBuilder>
         {/* notification button  */}
         <HeaderIconBuilder

@@ -6,15 +6,14 @@ import noResultImage from "../../../assets/images/Header/message.png";
 
 import MessageBuilder from "./MessageBuilder";
 
-// Importing icons from react-icons/fa6
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaExpandArrowsAlt } from "react-icons/fa";
 
 const noResults = (
   <div className={styles.empty}>
     <img src={noResultImage} alt="" />
-    <h3>User not found</h3>
-    <p>Restart the web or try another keyword</p>
+    <h3>No chats available</h3>
+    <p>No chats found. Start chatting.</p>
   </div>
 );
 
@@ -52,7 +51,7 @@ export default function Message() {
         <div className={styles.listMessages}>
           {filteredData.length === 0
             ? noResults
-            : filteredData.map((datum, index) => (
+            : filteredData.map((datum) => (
                 <MessageBuilder
                   avatar={datum.avatar}
                   name={datum.name}
@@ -63,7 +62,8 @@ export default function Message() {
                   }
                   status={datum.status}
                   isActive={datum.isActive}
-                  key={index}
+                  isRead={datum.isRead}
+                  key={datum.id}
                 />
               ))}
         </div>

@@ -1,13 +1,9 @@
-// Importing icons from react-icons/tb
 import { TbBrandMessengerFilled } from "react-icons/tb";
 
-// Importing icons from react-icons/fa
 import { FaUserFriends, FaBookmark } from "react-icons/fa";
 
-// Importing icons from react-icons/io
 import { IoMdPersonAdd } from "react-icons/io";
 
-// Importing icons from react-icons/fa6
 import { FaNewspaper } from "react-icons/fa6";
 
 import MenuIconsBuilder from "./MenuIconsBuilder";

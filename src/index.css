@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "Bold";
+  src: url(./assets/fonts/BeVietnamPro-Medium.ttf);
+}
+
+@font-face {
   font-family: "Paragraph";
   src: url(./assets/fonts/BeVietnamPro-Light.ttf);
 }
