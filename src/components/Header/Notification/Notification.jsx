@@ -3,6 +3,7 @@ import noResultImage from "../../../assets/images/Header/notification.png";
 import notifications from "./dummydata";
 
 import NotificationBuilder from "./NotificationBuilder";
+import { useState } from "react";
 
 const empty = (
   <div className={styles.empty}>
@@ -13,28 +14,69 @@ const empty = (
 );
 
 export default function Notification() {
+  const [highlightButton, setHighlightButton] = useState("All");
+
+  function handleHighlightButton(value) {
+    setHighlightButton(value);
+  }
+
+  const allNotifications = notifications.map((notification) => notification);
+
+  const unreadNotifications = notifications.filter(
+    (notification) => !notification.isRead,
+  );
+
   return (
     <div className={styles.notification}>
       <h3>Notifications</h3>
       <div className={styles.notificationButtons}>
         {/* e.stopPropagation() prevents the click event from bubbling up to the parent components. */}
-        <button onClick={(e) => e.stopPropagation()}>All</button>
-        <button onClick={(e) => e.stopPropagation()}>Unread</button>
+        <button
+          className={highlightButton === "All" && styles.highlight}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleHighlightButton("All");
+          }}
+        >
+          All
+        </button>
+        <button
+          className={highlightButton === "Unread" && styles.highlight}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleHighlightButton("Unread");
+          }}
+        >
+          Unread
+        </button>
       </div>
       <div className={styles.notificationContainer}>
         <div className={styles.listOfNotifications}>
           {notifications.length === 0
             ? empty
-            : notifications.map((notification) => (
-                <NotificationBuilder
-                  avatar={notification.avatar}
-                  name={notification.name}
-                  message={notification.message}
-                  timestamp={notification.timestamp}
-                  typeOf={notification.typeOf}
-                  key={notification.id}
-                />
-              ))}
+            : highlightButton === "All"
+              ? allNotifications.map((notification) => (
+                  <NotificationBuilder
+                    avatar={notification.avatar}
+                    name={notification.name}
+                    message={notification.message}
+                    timestamp={notification.timestamp}
+                    typeOf={notification.typeOf}
+                    isRead={notification.isRead}
+                    key={notification.id}
+                  />
+                ))
+              : unreadNotifications.map((notification) => (
+                  <NotificationBuilder
+                    avatar={notification.avatar}
+                    name={notification.name}
+                    message={notification.message}
+                    timestamp={notification.timestamp}
+                    typeOf={notification.typeOf}
+                    isRead={notification.isRead}
+                    key={notification.id}
+                  />
+                ))}
         </div>
       </div>
     </div>

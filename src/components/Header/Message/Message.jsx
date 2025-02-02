@@ -60,7 +60,7 @@ export default function Message() {
                       ? datum.message.slice(0, 50) + "..."
                       : datum.message
                   }
-                  status={datum.status}
+                  timestamp={datum.timestamp}
                   isActive={datum.isActive}
                   isRead={datum.isRead}
                   key={datum.id}

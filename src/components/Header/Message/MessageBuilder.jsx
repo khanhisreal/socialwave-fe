@@ -18,7 +18,7 @@ export default function MessageBuilder({
       <div className={styles.conversation}>
         <h3>{name}</h3>
         <p className={isRead ? null : styles.isRead}>{message}</p>
-        <p className={styles.timestamp}>Sent {timestamp} ago</p>
+        <p className={styles.timestamp}>Sent {timestamp}</p>
       </div>
     </a>
   );

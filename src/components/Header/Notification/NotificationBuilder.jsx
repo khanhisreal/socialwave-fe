@@ -14,6 +14,7 @@ export default function NotificationBuilder({
   message,
   timestamp,
   typeOf,
+  isRead,
 }) {
   const icon =
     (typeOf === "friendRequest" && <IoMdPersonAdd />) ||
@@ -25,7 +26,10 @@ export default function NotificationBuilder({
     (typeOf === "friendRequestAccepted" && <BsPersonCheckFill />);
 
   return (
-    <a href="#" className={styles.singleNotification}>
+    <a
+      href="#"
+      className={`${styles.singleNotification} ${isRead && styles.isRead}`}
+    >
       <div className={styles.left}>
         <img src={avatar} alt="avatar" />
         <div className={styles.avatar}>{icon}</div>
@@ -42,9 +46,9 @@ export default function NotificationBuilder({
 
 NotificationBuilder.propTypes = {
   avatar: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   timestamp: PropTypes.string.isRequired,
   typeOf: PropTypes.string.isRequired,
+  isRead: PropTypes.bool.isRequired,
 };

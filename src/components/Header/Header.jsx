@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./Header.module.css";
 import logo from "../../assets/images/Header/socialwave_logo.png";
 import dummyProfilePic from "../../assets/images/Header/dummy_avatar.png";
-import messageIndicator from "./MessageIndicator";
+import indicator from "./Indicator";
 
 import HeaderIconBuilder from "./HeaderIconBuilder";
 import Menu from "./Menu/Menu";
@@ -16,7 +16,7 @@ import { FaBell } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export default function Header() {
-  const [data, setData] = useState("notification");
+  const [data, setData] = useState("account");
 
   function assignData(value) {
     //if the value is the same as the current data, set data to null
@@ -49,14 +49,13 @@ export default function Header() {
         <HeaderIconBuilder
           buttonType={"message"}
           triggerClick={assignData}
-          // This shit is a prop, don't try to change it to module css!
           buttonClass={"messageParent"}
         >
           <MdMessage />
           {data === "message" && <Message />}
-          {!data && (
+          {data !== "message" && ( // Show only if "message" is NOT selected
             <div className={styles.messageIndicator}>
-              {messageIndicator > 99 ? 99 + "+" : messageIndicator}
+              {indicator.message > 99 ? "99+" : indicator.message}
             </div>
           )}
         </HeaderIconBuilder>
@@ -64,11 +63,15 @@ export default function Header() {
         <HeaderIconBuilder
           buttonType={"notification"}
           triggerClick={assignData}
-          // This shit is a prop, don't try to change it to module css!
           buttonClass={"notificationParent"}
         >
           <FaBell />
           {data === "notification" && <Notification />}
+          {data !== "notification" && ( // Show only if "notification" is NOT selected
+            <div className={styles.notificationIndicator}>
+              {indicator.notification > 99 ? "99+" : indicator.notification}
+            </div>
+          )}
         </HeaderIconBuilder>
         {/* account button  */}
         <HeaderIconBuilder
