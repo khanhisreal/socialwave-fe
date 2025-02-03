@@ -1,10 +1,11 @@
-import "./Body.css";
+import styles from "./Body.module.css";
+import PersonalWall from "./PersonalWall/PersonalWall";
 
-export default function PersonalWallBody() {
+export default function Body() {
   return (
     <>
-      <div className="content">
-        <p>Hello</p>
+      <div className={styles.container}>
+        <PersonalWall />
       </div>
     </>
   );
