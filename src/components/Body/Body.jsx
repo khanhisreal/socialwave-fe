@@ -1,4 +1,4 @@
-import "./PersonalWallBody.css";
+import "./Body.css";
 
 export default function PersonalWallBody() {
   return (
