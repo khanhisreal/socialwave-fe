@@ -1,8 +1,12 @@
 import { useState } from "react";
 
+//for css module
 import styles from "./Header.module.css";
+//logo socialwave for the platform
 import logo from "../../assets/images/Header/socialwave_logo.png";
+//logo of the user
 import dummyProfilePic from "../../assets/images/Header/dummy_avatar.png";
+//indicator data for unread message/notification
 import indicator from "./Indicator";
 
 import HeaderIconBuilder from "./HeaderIconBuilder";
@@ -16,7 +20,7 @@ import { FaBell } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export default function Header() {
-  const [data, setData] = useState("account");
+  const [data, setData] = useState("");
 
   function assignData(value) {
     //if the value is the same as the current data, set data to null

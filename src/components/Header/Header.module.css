@@ -404,8 +404,20 @@
   width: 18px;
   height: 18px;
   background-color: rgb(109, 214, 109);
-  border: 2px solid lightgray;
+  border: 2px solid white;
   border-radius: 50%;
+}
+
+.container
+  .right
+  .messageParent
+  .message
+  .messageContainer
+  .listMessages
+  .singleMessage:hover
+  .userAvatar
+  .green {
+  border: 2px solid #ececec;
 }
 
 .container
@@ -714,5 +726,134 @@ b {
 }
 
 /* account  */
+.container .right .accountParent .account .accountContainer {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 15px;
+  height: auto;
+  width: 300px;
+  margin: 5px;
+  overflow: auto;
+  pointer-events: none;
+}
+
+.container .right .accountParent .account .accountContainer .inspect {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.container .right .accountParent .account .accountContainer .inspect a:hover {
+  background-color: #ececec;
+}
+
+.container .right .accountParent .account .accountContainer .inspect .infor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  pointer-events: all;
+  text-decoration: none;
+}
+
+.container
+  .right
+  .accountParent
+  .account
+  .accountContainer
+  .inspect
+  .infor
+  img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.container .right .accountParent .account .accountContainer .inspect .infor p {
+  width: calc(100% - 65px);
+  text-align: left;
+}
+
+.container
+  .right
+  .accountParent
+  .account
+  .accountContainer
+  .inspect
+  a:nth-child(3) {
+  pointer-events: all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 0px;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-family: "Bold";
+}
+
+.container
+  .right
+  .accountParent
+  .account
+  .accountContainer
+  .inspect
+  a:nth-child(3)
+  .icon {
+  margin-right: 5px;
+}
+
+.container
+  .right
+  .accountParent
+  .account
+  .accountContainer
+  .accountButtons
+  .accountButton {
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+}
+
+.container
+  .right
+  .accountParent
+  .account
+  .accountContainer
+  .accountButtons
+  .accountButton:hover {
+  background-color: #ececec;
+}
+
+.container
+  .right
+  .accountParent
+  .account
+  .accountContainer
+  .accountButtons
+  .accountButton
+  .icon {
+  margin-right: 5px;
+}
+
+.container .right .accountParent .account .accountContainer .mark {
+  margin-top: 20px;
+  font-size: 80%;
+  color: grey;
+}
 
 /* end right  */

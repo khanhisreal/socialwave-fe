@@ -32,7 +32,7 @@ export default function Notification() {
       <div className={styles.notificationButtons}>
         {/* e.stopPropagation() prevents the click event from bubbling up to the parent components. */}
         <button
-          className={highlightButton === "All" && styles.highlight}
+          className={highlightButton === "All" ? styles.highlight : ""}
           onClick={(e) => {
             e.stopPropagation();
             handleHighlightButton("All");
@@ -41,7 +41,7 @@ export default function Notification() {
           All
         </button>
         <button
-          className={highlightButton === "Unread" && styles.highlight}
+          className={highlightButton === "Unread" ? styles.highlight : ""}
           onClick={(e) => {
             e.stopPropagation();
             handleHighlightButton("Unread");
@@ -57,23 +57,13 @@ export default function Notification() {
             : highlightButton === "All"
               ? allNotifications.map((notification) => (
                   <NotificationBuilder
-                    avatar={notification.avatar}
-                    name={notification.name}
-                    message={notification.message}
-                    timestamp={notification.timestamp}
-                    typeOf={notification.typeOf}
-                    isRead={notification.isRead}
+                    {...notification}
                     key={notification.id}
                   />
                 ))
               : unreadNotifications.map((notification) => (
                   <NotificationBuilder
-                    avatar={notification.avatar}
-                    name={notification.name}
-                    message={notification.message}
-                    timestamp={notification.timestamp}
-                    typeOf={notification.typeOf}
-                    isRead={notification.isRead}
+                    {...notification}
                     key={notification.id}
                   />
                 ))}
