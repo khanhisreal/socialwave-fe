@@ -1,10 +1,9 @@
 import styles from "./css/SideBar.module.css";
 export default function SideBar() {
     return (
-        <>
-            <div >
-                <SideBar className={styles.container}/>
-            </div>
-        </>
+        <div className={styles.container}>
+            {/* Nội dung sidebar ở đây */}
+            Sidebar content
+        </div>
     );
 }
