@@ -25,8 +25,7 @@
 
 body {
   width: 100%;
-  /* height: auto;  */
-  height: 2000px;
+  height: auto;
   background-color: #04724d;
   /* default font  */
   font-family: "Paragraph";

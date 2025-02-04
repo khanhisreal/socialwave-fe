@@ -10,6 +10,7 @@
   position: fixed;
   /* fixed height to create a gap below for the content  */
   height: 60px;
+  z-index: 1000;
 }
 
 .container img {
@@ -778,6 +779,7 @@ b {
 .container .right .accountParent .account .accountContainer .inspect .infor p {
   width: calc(100% - 65px);
   text-align: left;
+  font-family: "Bold";
 }
 
 .container
@@ -799,6 +801,17 @@ b {
   border-radius: 5px;
   margin-top: 5px;
   font-family: "Bold";
+  background-color: #ececec;
+}
+
+.container
+  .right
+  .accountParent
+  .account
+  .accountContainer
+  .inspect
+  a:nth-child(3):hover {
+  background-color: #c3c3c3;
 }
 
 .container

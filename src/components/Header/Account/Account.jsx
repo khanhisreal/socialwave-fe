@@ -16,7 +16,6 @@ export default function Account() {
       <h3>Account</h3>
       <div className={styles.accountContainer}>
         <div className={styles.inspect}>
-          {/* this is unclickable  */}
           <a
             href="#"
             onClick={(e) => e.stopPropagation()}

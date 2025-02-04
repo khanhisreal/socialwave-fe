@@ -1,0 +1,73 @@
+.container {
+  min-height: 500px;
+  width: 100%;
+  background-color: white;
+  margin-top: 300px;
+  border-top-left-radius: 150px;
+  border-top-right-radius: 150px;
+}
+
+/* place holder for userInfor  */
+.container .userInfor {
+  position: relative;
+  width: 100%;
+}
+
+.container .userInfor .avatar {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  position: absolute;
+  left: calc(50% - 100px);
+  bottom: -100px;
+  border-radius: 50%;
+}
+
+.container .userInfor .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.container .userInfor .avatar a {
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 50%;
+  position: absolute;
+  border: 7px solid white;
+  right: 8px;
+  bottom: 8px;
+}
+
+.container .userInfor .avatar a:hover {
+  background-color: gray;
+}
+
+.container .userInfor .avatar a .uploadLogo {
+  font-size: 120%;
+}
+
+.container .userInfor a {
+  /* turn to white later  */
+  background-color: lightgray;
+  display: inline-flex;
+  text-decoration: none;
+  align-items: center;
+  width: auto;
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0px;
+}
+
+.container .userInfor a p {
+  color: black;
+  margin-left: 5px;
+  font-family: "Bold";
+  font-size: 95%;
+}
