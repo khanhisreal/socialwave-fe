@@ -1,18 +1,23 @@
-import Header from "./components/Header/Header";
-import Body from "./components/Body/Body";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./pages/Root";
+import PersonalWall from "./pages/PersonalWall/PersonalWall";
+import NewsFeed from "./pages/NewsFeed/NewsFeed";
+import ErrorPage from "./pages/Error/ErrorPage";
 
-import { IconContext } from "react-icons/lib";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "/", element: <NewsFeed /> },
+      { path: "/wall", element: <PersonalWall /> },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <>
-      <IconContext.Provider value={{ color: "#000000", className: "icon" }}>
-        <Header></Header>
-        {/* create a margin-top of 60px please */}
-        <Body></Body>
-      </IconContext.Provider>
-    </>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;

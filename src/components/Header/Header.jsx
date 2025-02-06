@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 //for css module
 import styles from "./Header.module.css";
@@ -30,9 +31,9 @@ export default function Header() {
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        <a href="">
+        <Link to="/">
           <img src={logo} alt="socialwave logo" />
-        </a>
+        </Link>
         <div className={styles.searchBar}>
           <FaMagnifyingGlass className={styles.icon} />
           <input type="text" placeholder="Search Socialwave" />

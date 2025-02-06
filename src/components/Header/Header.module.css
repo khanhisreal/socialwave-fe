@@ -8,6 +8,7 @@
   padding: 8px 15px;
   width: 100vw;
   position: fixed;
+  top: 0;
   /* fixed height to create a gap below for the content  */
   height: 60px;
   z-index: 1000;
@@ -58,9 +59,9 @@
 .container .left .searchBar input::placeholder {
   color: #000000;
   position: absolute;
-  padding-left: 5px; /* Adjust this value to move the placeholder text */
+  padding-left: 5px;
   left: 35px;
-  line-height: 30px;
+  top: 15px;
   font-family: "Paragraph";
 }
 
@@ -429,7 +430,7 @@
   .listMessages
   .singleMessage
   .conversation {
-  width: 70%;
+  width: 73%;
   position: relative;
 }
 
@@ -515,6 +516,7 @@ b {
   border-radius: 20px;
   border: none;
   font-family: "Bold";
+  font-size: 80%
 }
 
 .container

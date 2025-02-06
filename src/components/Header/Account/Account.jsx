@@ -1,5 +1,6 @@
 import styles from "../../Header/Header.module.css";
 import dummyAvatar from "../../../assets/images/Header/dummy_avatar.png";
+import { Link } from "react-router-dom";
 
 import { MdLogout } from "react-icons/md";
 
@@ -16,14 +17,13 @@ export default function Account() {
       <h3>Account</h3>
       <div className={styles.accountContainer}>
         <div className={styles.inspect}>
-          <a
-            href="#"
-            onClick={(e) => e.stopPropagation()}
+          <Link
+            to={"/wall"}
             className={styles.infor}
           >
             <img src={dummyAvatar} alt="" />
             <p>Kevin Brown</p>
-          </a>
+          </Link>
           <hr />
           <a href="#" onClick={(e) => e.stopPropagation()}>
             <MdLogout className={styles.icon} /> Log out
