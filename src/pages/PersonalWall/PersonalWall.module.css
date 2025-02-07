@@ -3,16 +3,20 @@
   width: 100%;
   background-color: white;
   margin-top: 300px;
-  border-top-left-radius: 150px;
-  border-top-right-radius: 150px;
+  border-top-left-radius: 170px;
+  border-top-right-radius: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.container .userInfor {
+.container .userAvatarAndCover {
   position: relative;
   width: 100%;
 }
 
-.container .userInfor .avatar {
+.container .userAvatarAndCover .avatar {
   background-color: white;
   width: 200px;
   height: 200px;
@@ -23,7 +27,7 @@
   border-radius: 50%;
 }
 
-.container .userInfor .avatar img {
+.container .userAvatarAndCover .avatar img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -31,11 +35,11 @@
   cursor: pointer;
 }
 
-.container .userInfor .avatar img:hover {
+.container .userAvatarAndCover .avatar img:hover {
   opacity: 0.7;
 }
 
-.container .userInfor .avatar a {
+.container .userAvatarAndCover .avatar .addAvatar {
   background-color: lightgray;
   display: flex;
   align-items: center;
@@ -48,17 +52,17 @@
   bottom: 8px;
 }
 
-.container .userInfor .avatar a:hover {
+.container .userAvatarAndCover .avatar .addAvatar:hover {
   background-color: gray;
 }
 
-.container .userInfor .avatar a .uploadLogo {
+.container .userAvatarAndCover .avatar a .uploadLogo {
   font-size: 120%;
 }
 
-.container .userInfor a {
+.container .userAvatarAndCover .addCover {
   /* turn to white later  */
-  background-color: lightgray;
+  background-color: white;
   display: inline-flex;
   text-decoration: none;
   align-items: center;
@@ -66,10 +70,16 @@
   padding: 5px;
   border-radius: 5px;
   position: absolute;
-  bottom: 0px;
+  top: calc(50% - 40px);
+  left: -100px;
+  font-size: 80%;
 }
 
-.container .userInfor a p {
+.container .userAvatarAndCover .addCover:hover {
+  background-color: #ececec;
+}
+
+.container .userAvatarAndCover a p {
   color: black;
   margin-left: 5px;
   font-family: "Bold";
@@ -78,7 +88,7 @@
 
 /* start modal  */
 
-.container .userInfor .avatar .modal {
+.container .userAvatarAndCover .avatar .modal {
   display: flex; /* Hidden by default */
   flex-direction: column;
   align-items: center;
@@ -94,7 +104,7 @@
 }
 
 /* Modal Content (Image) */
-.container .userInfor .avatar .modalContent {
+.container .userAvatarAndCover .avatar .modalContent {
   margin-top: 60px;
   display: block;
   border-radius: 0%;
@@ -105,7 +115,7 @@
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
-.container .userInfor .avatar #caption {
+.container .userAvatarAndCover .avatar #caption {
   margin: auto;
   display: block;
   width: 80%;
@@ -117,7 +127,7 @@
 }
 
 /* Add Animation - Zoom in the Modal */
-.container .userInfor .avatar .modalContent,
+.container .userAvatarAndCover .avatar .modalContent,
 #caption {
   animation-name: zoom;
   animation-duration: 0.6s;
@@ -152,9 +162,78 @@
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 1000px) {
-  .container .userInfor .avatar .modalContent {
+  .container .userAvatarAndCover .avatar .modalContent {
     width: 100%;
   }
 }
 
 /* end modal  */
+
+.container .spaceHolder {
+  height: 120px;
+}
+
+.container .userInfor {
+  padding: 10px;
+  width: 70%;
+  max-width: 700px;
+}
+
+.container .userInfor .children {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.container .userInfor .children .child h1 {
+  color: black;
+  font-family: "Bold";
+  font-size: 130%;
+}
+
+.container .userInfor .children .child p {
+  color: black;
+  font-family: 120%;
+}
+
+.container .userInfor .bio {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.container .userInfor .bio p {
+  text-align: center;
+  width: 350px;
+  color: black;
+}
+
+.container .buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  max-width: 300px;
+}
+
+.container .buttons a {
+  padding: 7px 12px;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+  font-family: "Bold";
+}
+
+.container .buttons a:first-child {
+  background-color: var(--green);
+  color: white;
+}
+
+.container .buttons a:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.container .posts {
+  margin-top: 20px;
+}

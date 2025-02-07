@@ -1,4 +1,4 @@
-import styles from "./PersonalWall.module.css";
+import styles from "../PersonalWall.module.css";
 import PropTypes from "prop-types";
 
 export default function Modal({ image, caption, handleModal }) {
