@@ -1,0 +1,355 @@
+const posts = [
+  {
+    id: 1,
+    image: "https://picsum.photos/1920/1080?random=1",
+    title: "My First Post",
+    author: "John Doe",
+    likes: 120,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/women/1.jpg",
+        name: "Jane Smith",
+        text: "Great post!",
+        timestamp: "2 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+        name: "Alice Johnson",
+        text: "Thanks for sharing!",
+        timestamp: "1 hour ago",
+      },
+    ],
+  },
+  {
+    id: 2,
+    image: "https://picsum.photos/1920/1080?random=2",
+    title: "Another Day in Paradise",
+    author: "John Doe",
+    likes: 98,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+        name: "Bob Brown",
+        text: "Looks amazing!",
+        timestamp: "3 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+        name: "Charlie Davis",
+        text: "Wish I was there!",
+        timestamp: "2 hours ago",
+      },
+    ],
+  },
+  {
+    id: 3,
+    image: "https://picsum.photos/1920/1080?random=3",
+    title: "Exploring the Mountains",
+    author: "John Doe",
+    likes: 150,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/women/3.jpg",
+        name: "Emily White",
+        text: "Beautiful scenery!",
+        timestamp: "4 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+        name: "David Wilson",
+        text: "I love hiking too!",
+        timestamp: "3 hours ago",
+      },
+    ],
+  },
+  {
+    id: 4,
+    image: "https://picsum.photos/1920/1080?random=4",
+    title: "City Lights",
+    author: "John Doe",
+    likes: 75,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/men/4.jpg",
+        name: "Ethan Wright",
+        text: "Amazing view!",
+        timestamp: "5 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/women/4.jpg",
+        name: "Sophia Martinez",
+        text: "I love the city!",
+        timestamp: "4 hours ago",
+      },
+    ],
+  },
+  {
+    id: 5,
+    image: "https://picsum.photos/1920/1080?random=5",
+    title: "Sunset at the Beach",
+    author: "John Doe",
+    likes: 200,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/women/5.jpg",
+        name: "Olivia Thomas",
+        text: "So beautiful!",
+        timestamp: "6 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+        name: "James Anderson",
+        text: "I wish I was there!",
+        timestamp: "5 hours ago",
+      },
+    ],
+  },
+  {
+    id: 6,
+    image: "https://picsum.photos/1920/1080?random=6",
+    title: "Hiking Adventure",
+    author: "John Doe",
+    likes: 85,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/men/6.jpg",
+        name: "Michael Taylor",
+        text: "Looks like fun!",
+        timestamp: "7 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/women/6.jpg",
+        name: "Isabella Moore",
+        text: "I love hiking!",
+        timestamp: "6 hours ago",
+      },
+    ],
+  },
+  {
+    id: 7,
+    image: "https://picsum.photos/1920/1080?random=7",
+    title: "Delicious Food",
+    author: "John Doe",
+    likes: 110,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/women/7.jpg",
+        name: "Mia Harris",
+        text: "Yummy!",
+        timestamp: "8 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/men/7.jpg",
+        name: "William Jackson",
+        text: "I want to try this!",
+        timestamp: "7 hours ago",
+      },
+    ],
+  },
+  {
+    id: 8,
+    image: "https://picsum.photos/1920/1080?random=8",
+    title: "Road Trip",
+    author: "John Doe",
+    likes: 95,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/men/8.jpg",
+        name: "Alexander Clark",
+        text: "Road trips are the best!",
+        timestamp: "9 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/women/8.jpg",
+        name: "Emily White",
+        text: "I love road trips!",
+        timestamp: "8 hours ago",
+      },
+    ],
+  },
+  {
+    id: 9,
+    image: "https://picsum.photos/1920/1080?random=9",
+    title: "Camping Under the Stars",
+    author: "John Doe",
+    likes: 130,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/women/9.jpg",
+        name: "Sophia Martinez",
+        text: "So peaceful!",
+        timestamp: "10 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/men/9.jpg",
+        name: "Ethan Wright",
+        text: "I love camping!",
+        timestamp: "9 hours ago",
+      },
+    ],
+  },
+  {
+    id: 10,
+    image: "https://picsum.photos/1920/1080?random=10",
+    title: "Exploring the Forest",
+    author: "John Doe",
+    likes: 145,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/men/10.jpg",
+        name: "David Wilson",
+        text: "Nature is amazing!",
+        timestamp: "11 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/women/10.jpg",
+        name: "Alice Johnson",
+        text: "I love the forest!",
+        timestamp: "10 hours ago",
+      },
+    ],
+  },
+  {
+    id: 11,
+    image: "https://picsum.photos/1920/1080?random=11",
+    title: "Snowy Mountains",
+    author: "John Doe",
+    likes: 160,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/women/11.jpg",
+        name: "Jane Smith",
+        text: "So beautiful!",
+        timestamp: "12 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/men/11.jpg",
+        name: "Bob Brown",
+        text: "I love the snow!",
+        timestamp: "11 hours ago",
+      },
+    ],
+  },
+  {
+    id: 12,
+    image: "https://picsum.photos/1920/1080?random=12",
+    title: "Beach Day",
+    author: "John Doe",
+    likes: 175,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/men/12.jpg",
+        name: "Charlie Davis",
+        text: "I love the beach!",
+        timestamp: "13 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/women/12.jpg",
+        name: "Olivia Thomas",
+        text: "So relaxing!",
+        timestamp: "12 hours ago",
+      },
+    ],
+  },
+  {
+    id: 13,
+    image: "https://picsum.photos/1920/1080?random=13",
+    title: "Cityscape",
+    author: "John Doe",
+    likes: 80,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/women/13.jpg",
+        name: "Isabella Moore",
+        text: "Amazing view!",
+        timestamp: "14 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/men/13.jpg",
+        name: "Michael Taylor",
+        text: "I love the city!",
+        timestamp: "13 hours ago",
+      },
+    ],
+  },
+  {
+    id: 14,
+    image: "https://picsum.photos/1920/1080?random=14",
+    title: "Sunrise",
+    author: "John Doe",
+    likes: 90,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/men/14.jpg",
+        name: "James Anderson",
+        text: "Beautiful sunrise!",
+        timestamp: "15 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/women/14.jpg",
+        name: "Mia Harris",
+        text: "I love sunrises!",
+        timestamp: "14 hours ago",
+      },
+    ],
+  },
+  {
+    id: 15,
+    image: "https://picsum.photos/1920/1080?random=15",
+    title: "Night Sky",
+    author: "John Doe",
+    likes: 105,
+    comments: [
+      {
+        id: 1,
+        avatar: "https://randomuser.me/api/portraits/women/15.jpg",
+        name: "Sophia Martinez",
+        text: "So many stars!",
+        timestamp: "16 hours ago",
+      },
+      {
+        id: 2,
+        avatar: "https://randomuser.me/api/portraits/men/15.jpg",
+        name: "Ethan Wright",
+        text: "I love stargazing!",
+        timestamp: "15 hours ago",
+      },
+    ],
+  },
+];
+
+export default function fetchPosts() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(posts); // return full data set
+    }, 2500); // return the posts after 2 seconds
+  });
+}

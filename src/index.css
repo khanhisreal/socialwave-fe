@@ -20,7 +20,7 @@
 :root {
   --green: #04724d;
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  --transition: box-shadow 0.3s ease;
+  --box-transition: box-shadow 0.3s ease;
   --box-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 

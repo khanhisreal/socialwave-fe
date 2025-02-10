@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
+  padding: 5px;
 }
 
 .container .userAvatarAndCover {
@@ -236,4 +237,5 @@
 
 .container .posts {
   margin-top: 20px;
+  width: 100%;
 }

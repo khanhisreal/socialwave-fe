@@ -79,7 +79,7 @@ export default function PersonalWall() {
         <a href="#">View archive</a>
       </div>
       <div className={styles.posts}>
-        <Posts />
+        <Posts /> 
       </div>
     </div>
   );

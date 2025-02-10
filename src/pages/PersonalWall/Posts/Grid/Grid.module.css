@@ -1,0 +1,18 @@
+.container {
+    width: 90%;
+    padding: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blueviolet;
+}
+
+.container .post {
+    width: 33.33333%; /* Shrink width to 33.33333% */
+    height: auto; /* Height will scale automatically */
+    padding: 1px; /* Optional: Add padding between images */
+}
+
+.container .post img {
+    width: 100%; /* Image takes full width of the post container */
+    height: auto; /* Maintain aspect ratio */
+}
