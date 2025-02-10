@@ -516,7 +516,7 @@ b {
   border-radius: 20px;
   border: none;
   font-family: "Bold";
-  font-size: 80%
+  font-size: 80%;
 }
 
 .container
@@ -534,7 +534,6 @@ b {
   .notification
   .notificationButtons
   button:hover {
-  background-color: #6e6e6e;
   cursor: pointer;
 }
 

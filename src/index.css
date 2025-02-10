@@ -19,7 +19,8 @@
 
 :root {
   --green: #04724d;
-  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --lightgrey: #ececec;
+  --box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
   --box-transition: box-shadow 0.3s ease;
   --box-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
