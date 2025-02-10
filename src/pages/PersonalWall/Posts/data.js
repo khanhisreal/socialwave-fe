@@ -350,6 +350,6 @@ export default function fetchPosts() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(posts); // return full data set
-    }, 2500); // return the posts after 2 seconds
+    }, 50); // return the posts after 50ms
   });
 }
