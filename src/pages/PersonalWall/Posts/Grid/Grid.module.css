@@ -1,28 +1,29 @@
 .container {
-  width: 95%;
+  width: 90%;
   padding: 1px;
   display: flex;
-  flex-wrap: nowrap;
   flex-direction: row-reverse;
+  align-items: start;
 }
 
 .container .postContainer {
-  width: 95%;
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+  gap: 10px; /* Adjust spacing between grid items */
 }
 
-.container p {
+.container .postContainer p{
   color: black;
 }
 
 .container .post {
-  width: 33.33333%; /* Shrink width to 33.33333% */
-  height: auto; /* Height will scale automatically */
-  padding: 1px; /* Optional: Add padding between images */
+  width: 100%; /* Ensures each post fits within the grid */
+  padding: 0;
 }
 
 .container .post img {
-  width: 100%; /* Image takes full width of the post container */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
+  display: block;
 }
