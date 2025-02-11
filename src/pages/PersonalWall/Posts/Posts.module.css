@@ -1,0 +1,40 @@
+.container {
+  width: 100%;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.container p {
+  color: black;
+}
+
+.container .toggle {
+  width: 220px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.container .toggle button {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.container .toggle button:hover {
+  text-decoration: underline;
+}
+
+.container .toggle button .icon {
+  margin-right: 5px;
+}
+
+.container .toggle button.highlight {
+    color: var(--green);
+}
+
+.posts {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0px;
+}

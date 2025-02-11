@@ -1,37 +1,93 @@
-import "./Header.css";
-import logo from "../../assets/images/Header/socialwave_logo.png";
-import dummyProfilePic from "../../assets/images/Header/dummy_avatar.png";
-import ButtonNavigation from "./ButtonNavigation/ButtonNavigation";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-import { MdApps } from "react-icons/md";
-import { MdMessage } from "react-icons/md";
+//for css module
+import styles from "./Header.module.css";
+//logo socialwave for the platform
+import logo from "../../assets/images/Header/socialwave_logo.png";
+//logo of the user
+import dummyProfilePic from "../../assets/images/Header/dummy_avatar.png";
+//indicator data for unread message/notification
+import indicator from "./Indicator";
+
+import HeaderIconBuilder from "./HeaderIconBuilder";
+import Menu from "./Menu/Menu";
+import Message from "./Message/Message";
+import Notification from "./Notification/Notification";
+import Account from "./Account/Account";
+
+import { MdApps, MdMessage } from "react-icons/md";
 import { FaBell } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export default function Header() {
+  const [data, setData] = useState("");
+
+  function assignData(value) {
+    //if the value is the same as the current data, set data to null
+    setData((prevData) => (prevData === value ? null : value));
+  }
+
   return (
-    <div className="container">
-      <div className="left">
-        <a href="">
+    <div className={styles.container}>
+      <div className={styles.left}>
+        <Link to="/">
           <img src={logo} alt="socialwave logo" />
-        </a>
-        <div className="search-bar">
-          <i className="fa-solid fa-magnifying-glass"></i>
+        </Link>
+        <div className={styles.searchBar}>
+          <FaMagnifyingGlass className={styles.icon} />
           <input type="text" placeholder="Search Socialwave" />
         </div>
       </div>
-      <div className="right">
-        <ButtonNavigation>
+      <div className={styles.right}>
+        {/* menu button  */}
+        <HeaderIconBuilder
+          buttonType={"menu"}
+          triggerClick={assignData}
+          // This shit is a prop, don't try to change it to module css!
+          buttonClass={"menuParent"}
+        >
           <MdApps />
-        </ButtonNavigation>
-        <ButtonNavigation>
+          {data === "menu" && <Menu />}
+        </HeaderIconBuilder>
+        {/* message button  */}
+        <HeaderIconBuilder
+          buttonType={"message"}
+          triggerClick={assignData}
+          buttonClass={"messageParent"}
+        >
           <MdMessage />
-        </ButtonNavigation>
-        <ButtonNavigation>
+          {data === "message" && <Message />}
+          {data !== "message" && ( // Show only if "message" is NOT selected
+            <div className={styles.messageIndicator}>
+              {indicator.message > 99 ? "99+" : indicator.message}
+            </div>
+          )}
+        </HeaderIconBuilder>
+        {/* notification button  */}
+        <HeaderIconBuilder
+          buttonType={"notification"}
+          triggerClick={assignData}
+          buttonClass={"notificationParent"}
+        >
           <FaBell />
-        </ButtonNavigation>
-        <ButtonNavigation>
+          {data === "notification" && <Notification />}
+          {data !== "notification" && ( // Show only if "notification" is NOT selected
+            <div className={styles.notificationIndicator}>
+              {indicator.notification > 99 ? "99+" : indicator.notification}
+            </div>
+          )}
+        </HeaderIconBuilder>
+        {/* account button  */}
+        <HeaderIconBuilder
+          buttonType={"account"}
+          triggerClick={assignData}
+          // This shit is a prop, don't try to change it to module css!
+          buttonClass={"accountParent"}
+        >
           <img src={dummyProfilePic} alt="" />
-        </ButtonNavigation>
+          {data === "account" && <Account />}
+        </HeaderIconBuilder>
       </div>
     </div>
   );

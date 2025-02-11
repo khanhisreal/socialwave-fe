@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+main {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: white;
+  padding: 20px 50px;
+  border-radius: 50px;
+}
+
+main * {
+  margin: 5px 0px;
+}
+
+main h1 {
+  font-size: 130%;
+  color: black;
+}
+
+main img {
+  width: 150px;
+  height: 150px;
+}
+
+main p {
+  width: 420px;
+  font-size: 100%;
+  text-align: center;
+  color: black;
+}
+
+main a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+main a:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}

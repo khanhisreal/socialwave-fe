@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@font-face {
+  font-family: "Bold";
+  src: url(./assets/fonts/BeVietnamPro-Medium.ttf);
 }
 
 @font-face {
@@ -18,14 +17,27 @@
   src: url(./assets/fonts/notosans_bold.ttf);
 }
 
+:root {
+  --green: #04724d;
+  --lightgrey: #ececec;
+  --box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
+  --box-transition: box-shadow 0.3s ease;
+  --box-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   width: 100%;
-  /* height: auto;  */
-  height: 2000px;
+  height: auto;
   background-color: #04724d;
   /* default font  */
   font-family: "Paragraph";
-  font-size: 17px;
+  font-size: 15px;
 }
 
 p {
@@ -40,5 +52,4 @@ h5,
 h6 {
   font-family: "Heading";
   color: white;
-  font-size: 32px;
 }

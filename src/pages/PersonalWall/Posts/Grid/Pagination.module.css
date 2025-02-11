@@ -1,0 +1,28 @@
+.container {
+  width: 5%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container .buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.container button {
+  padding: 2.5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: var(--lightgrey);
+  box-shadow: var(--box-shadow);
+}
+
+.container button:hover {
+  background-color: #c3c3c3;
+}
+
+.container button.active {
+    background-color: var(--green);
+    color: white;
+}
