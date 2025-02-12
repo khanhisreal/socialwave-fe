@@ -2,12 +2,21 @@ import { useEffect, useState } from "react";
 import styles from "./Grid.module.css";
 import fetchPosts from "../data";
 import Pagination from "./Pagination";
+import Modal from "./Modal/Modal";
 
 export default function Grid() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(9);
+  const [postPerPage] = useState(9);
+  // handle modal
+  const [modalDisplay, setModalDisplay] = useState(false);
+  const [post, setPost] = useState();
+
+  function handleModalDisplay(post) {
+    setModalDisplay((prevState) => !prevState);
+    setPost(post);
+  }
 
   //simulate an API call
   useEffect(() => {
@@ -22,9 +31,13 @@ export default function Grid() {
   const currentPosts = posts.slice(firstPostIndex, lastPostIndex);
 
   const list = currentPosts.map((post) => (
-    <div className={styles.post} key={post.id}>
+    <a
+      onClick={() => handleModalDisplay(post)}
+      className={styles.post}
+      key={post.id}
+    >
       <img src={post.image} alt="" />
-    </div>
+    </a>
   ));
 
   return (
@@ -40,6 +53,10 @@ export default function Grid() {
         handleCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
+      {/* modal - this is hidden by default */}
+      {modalDisplay && (
+        <Modal toggleModal={handleModalDisplay} fetchPost={post} />
+      )}
     </div>
   );
 }

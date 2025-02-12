@@ -20,6 +20,7 @@
 .container .post {
   width: 100%; /* Ensures each post fits within the grid */
   padding: 0;
+  cursor: pointer;
 }
 
 .container .post img {
