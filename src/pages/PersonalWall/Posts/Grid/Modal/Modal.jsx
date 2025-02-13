@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import fetchPosts from "../../data";
 import temp from "../../../../../assets/images/Pages/dummy_avatar.png";
 import { useEffect, useState } from "react";
+import Comment from "./Comment";
+import Bottom from "./Bottom";
 
 export default function Modal({ toggleModal, fetchPost }) {
   //hold the relavent post data
@@ -28,30 +30,32 @@ export default function Modal({ toggleModal, fetchPost }) {
         </div>
         <div className={styles.right}>
           <div className={styles.top}>
-            <div className={styles.avatar}>
-              <img src={temp} alt="" />
-            </div>
             <div className={styles.content}>
-              {/* Got some length restrictions here  */}
-              <div className={styles.postText}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium eius nobis magni, facilis animi nemo culpa maiores
-                debitis libero assumenda?
-              </div>
-              {/* no limit  */}
-              <div className={styles.commentSection}>
-                <div className={styles.comment}>lorem</div>
-                <div className={styles.comment}>lorem</div>
-                <div className={styles.comment}>lorem</div>
-                <div className={styles.comment}>lorem</div>
-                <div className={styles.comment}>lorem</div>
-                <div className={styles.comment}>lorem</div>
-                <div className={styles.comment}>lorem</div>
-                <div className={styles.comment}>lorem</div>
-              </div>
+              <img src={temp} alt="" className={styles.avatar} />
+              <p className={styles.caption}>
+                <span>{modalData.username}</span> {modalData.caption}
+              </p>
+            </div>
+            <div className={styles.commentSection}>
+              <h3>Comments</h3>
+              {modalData.comments && modalData.comments.length > 0 ? (
+                modalData.comments.map((comment) => (
+                  <Comment
+                    key={comment.id}
+                    commentAvatar={comment.avatar}
+                    commentName={comment.name}
+                    commentText={comment.text}
+                    commentTimeStamp={comment.timestamp}
+                  />
+                ))
+              ) : (
+                <p>No comments available.</p>
+              )}
             </div>
           </div>
-          <div className={styles.bottom}>place holder</div>
+          <div className={styles.bottom}>
+            <Bottom likeCount={modalData.likes}/>
+          </div>
         </div>
         {button}
       </div>

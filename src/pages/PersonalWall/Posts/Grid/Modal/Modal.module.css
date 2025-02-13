@@ -62,46 +62,45 @@
 }
 
 .top {
-  display: flex;
-  background-color: blueviolet;
   height: 70%;
-}
-
-.top .avatar {
-  background-color: beige;
-  width: 13%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.top .avatar img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  overflow: auto;
 }
 
 .top .content {
-  width: 87%;
-  background-color: brown;
+  height: auto;
+  max-height: 20%;
+  width: 100%;
+  display: flex;
 }
 
-.content .postText {
-  height: auto;
-  max-height: 35%;
-  background-color: burlywood;
+.top .content .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-.content .commentSection {
-  background-color: azure;
-  height: auto;
-  max-height: 65%;
-  overflow: auto;
+.top .content .caption {
+  display: inline-block;
+  width: calc(100% - 60px);
+  color: black;
+}
+
+.top .content .caption span {
+  font-family: "Bold";
+}
+
+.top .commentSection {
+  padding-top: 10px;
+}
+
+.top .commentSection h3,
+p {
+  color: black;
 }
 
 .bottom {
   height: 30%;
-  background-color: cadetblue;
 }
 
 @media screen and (max-width: 1060px) {
@@ -115,5 +114,9 @@
 
   .right {
     width: 100%;
+  }
+
+  .right .top .commentSection {
+    display: none;
   }
 }

@@ -1,6 +1,6 @@
 const userData = {
   id: 1,
-  name: "Kevin Brown",
+  name: "John Doe",
   username: "@abc123xyz",
   followers: 1560,
   following: 278,

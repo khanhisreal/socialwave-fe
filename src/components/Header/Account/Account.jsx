@@ -22,7 +22,7 @@ export default function Account() {
             className={styles.infor}
           >
             <img src={dummyAvatar} alt="" />
-            <p>Kevin Brown</p>
+            <p>John Doe</p>
           </Link>
           <hr />
           <a href="#" onClick={(e) => e.stopPropagation()}>

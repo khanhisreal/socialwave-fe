@@ -1,0 +1,32 @@
+.comment {
+  display: flex;
+  padding: 10px 0px;
+}
+
+.comment .avatar {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.comment .avatar img {
+  border-radius: 50%;
+}
+
+.comment .caption {
+  display: inline-block;
+  width: calc(100% - 60px);
+  color: black;
+}
+
+.comment .caption .bottom span {
+    font-family: "Paragraph";
+    font-size: 80%;
+    color: #373737;
+}
+
+.comment .caption span {
+  font-family: "Bold";
+}
+
+
