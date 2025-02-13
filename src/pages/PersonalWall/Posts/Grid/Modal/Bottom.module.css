@@ -25,3 +25,18 @@
 .inputBar {
   height: 33.33%;
 }
+
+.inputBar button:nth-child(1) {
+  padding: 5px;
+  width: 10%;
+}
+
+.inputBar input {
+  height: 100%;
+  width: 80%;
+}
+
+.inputBar button:nth-child(3) {
+  padding: 5px;
+  width: 10%;
+} 
