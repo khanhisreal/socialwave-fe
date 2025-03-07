@@ -1,24 +1,39 @@
 import styles from "./Modal.module.css";
 import PropTypes from "prop-types";
-import fetchPosts from "../../data";
-import temp from "../../../../../assets/images/Pages/dummy_avatar.png";
+import fetchPosts from "../data";
+import temp from "../../../../assets/images/Pages/dummy_avatar.png";
 import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import Bottom from "./Bottom";
 
-export default function Modal({ toggleModal, fetchPost }) {
+export default function Modal({
+  toggleModal,
+  fetchPost,
+  getPostId,
+  performActionIsHidden,
+}) {
   //hold the relavent post data
   const [modalData, setModalData] = useState("");
 
   useEffect(() => {
     fetchPosts().then((data) => {
-      setModalData(data.find((item) => item.id === fetchPost.id));
+      const selectedPost = data.find((item) => item.id === fetchPost.id);
+      setModalData(selectedPost);
+      if (selectedPost) {
+        getPostId(selectedPost);
+      }
     });
-  }, [fetchPost?.id]);
+  }, [fetchPost?.id, getPostId]);
 
   const button = (
     <button className={styles.close} onClick={() => toggleModal()}>
       X
+    </button>
+  );
+
+  const actionButton = (
+    <button className={styles.togglePost} onClick={performActionIsHidden}>
+      ...
     </button>
   );
 
@@ -54,10 +69,11 @@ export default function Modal({ toggleModal, fetchPost }) {
             </div>
           </div>
           <div className={styles.bottom}>
-            <Bottom likeCount={modalData.likes}/>
+            <Bottom likeCount={modalData.likes} />
           </div>
         </div>
         {button}
+        {actionButton}
       </div>
     </div>
   );
@@ -66,4 +82,6 @@ export default function Modal({ toggleModal, fetchPost }) {
 Modal.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   fetchPost: PropTypes.object,
+  getPostId: PropTypes.func.isRequired,
+  performActionIsHidden: PropTypes.func,
 };

@@ -4,9 +4,9 @@ import styles from "./PersonalWall.module.css";
 import dummyAvatar from "../../assets/images/Pages/dummy_avatar.png";
 import userData from "./data/data";
 import Modal from "./Modal/Modal";
-import Posts from "./Posts/Posts";
 
 import { FaCameraRetro, FaImages } from "react-icons/fa";
+import Grid from "./Posts/Grid";
 
 export default function PersonalWall() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -79,7 +79,7 @@ export default function PersonalWall() {
         <a href="#">View archive</a>
       </div>
       <div className={styles.posts}>
-        <Posts /> 
+        <Grid />
       </div>
     </div>
   );

@@ -1,0 +1,7 @@
+.progress-bar {
+  height: 20px;
+  background-color: #4caf50;
+  text-align: center;
+  line-height: 20px;
+  transition: width 0.5s ease-in-out; /* Add transition for smooth progress */
+}

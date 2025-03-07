@@ -1,21 +1,32 @@
 import { useEffect, useState } from "react";
 import styles from "./Grid.module.css";
-import fetchPosts from "../data";
-import Pagination from "./Pagination";
+import fetchPosts from "./data";
+import Pagination from "../../../components/Pagination/Pagination";
 import Modal from "./Modal/Modal";
+import ActionButton from "./Modal/ActionButton";
 
 export default function Grid() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(9);
+  const [postPerPage] = useState(12);
   // handle modal
   const [modalDisplay, setModalDisplay] = useState(false);
   const [post, setPost] = useState();
+  const [actionIsHidden, setActionIsHidden] = useState(true);
+  const [postId, setPostId] = useState();
 
   function handleModalDisplay(post) {
     setModalDisplay((prevState) => !prevState);
     setPost(post);
+  }
+
+  function handlePostId(id) {
+    setPostId(id);
+  }
+
+  function handleActionIsHidden() {
+    setActionIsHidden((prevState) => !prevState);
   }
 
   //simulate an API call
@@ -55,7 +66,18 @@ export default function Grid() {
       />
       {/* modal - this is hidden by default */}
       {modalDisplay && (
-        <Modal toggleModal={handleModalDisplay} fetchPost={post} />
+        <Modal
+          toggleModal={handleModalDisplay}
+          fetchPost={post}
+          getPostId={handlePostId}
+          performActionIsHidden={handleActionIsHidden}
+        />
+      )}
+      {!actionIsHidden && (
+        <ActionButton
+          performActionIsHidden={handleActionIsHidden}
+          postId={postId}
+        />
       )}
     </div>
   );

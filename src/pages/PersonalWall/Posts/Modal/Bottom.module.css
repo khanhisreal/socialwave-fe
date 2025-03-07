@@ -2,6 +2,8 @@
   width: 100%;
   height: 100%;
   padding-top: 5px;
+  padding-top: 15px;
+  border-top: 1px solid var(--lightgrey);
 }
 
 .functionalBar {
@@ -22,13 +24,27 @@
   height: 33.33%;
 }
 
+.reactions span {
+  font-family: "Bold";
+}
+
 .inputBar {
   height: 33.33%;
+  padding-top: 5px;
+  border-top: 1px solid var(--lightgrey);
 }
 
 .inputBar button:nth-child(1) {
   padding: 5px;
   width: 10%;
+  font-size: 130%;
+  position: relative;
+}
+
+.inputBar button:nth-child(1) .emojiPicker {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
 }
 
 .inputBar input {

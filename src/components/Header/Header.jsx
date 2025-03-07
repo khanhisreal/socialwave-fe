@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 //for css module
 import styles from "./Header.module.css";
 //logo socialwave for the platform
-import logo from "../../assets/images/Header/socialwave_logo.png";
+import logo from "../../assets/images/Header/socialwave-logo.png"; 
 //logo of the user
 import dummyProfilePic from "../../assets/images/Header/dummy_avatar.png";
 //indicator data for unread message/notification
@@ -32,7 +32,7 @@ export default function Header() {
     <div className={styles.container}>
       <div className={styles.left}>
         <Link to="/">
-          <img src={logo} alt="socialwave logo" />
+          <img src={logo} alt="socialwave logo" />  
         </Link>
         <div className={styles.searchBar}>
           <FaMagnifyingGlass className={styles.icon} />
