@@ -1,15 +1,11 @@
 import { Fragment, useState } from "react";
-
 import { FaMagnifyingGlass } from "react-icons/fa6";
-
 import { IoIosCreate } from "react-icons/io";
-
 import { FaBookOpen } from "react-icons/fa";
-
 import { MdEmojiEvents } from "react-icons/md";
 
 import menuIcons from "./MenuIcons";
-import styles from "../../Header/Header.module.css";
+import styles from "./Menu.module.css";
 import noResultImage from "../../../assets/images/Header/menu.webp";
 
 const noResults = (

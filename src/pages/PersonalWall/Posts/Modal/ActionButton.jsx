@@ -21,7 +21,9 @@ export default function ActionButton({ performActionIsHidden, postId }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modalContent} ref={modalRef}>
-        <a href="#" onClick={() => alert(postId.id)}>Delete</a>
+        <a href="#" onClick={() => alert(postId.id)}>
+          Delete
+        </a>
         <a href="#">Edit</a>
         <a href="#">Cancel</a>
       </div>

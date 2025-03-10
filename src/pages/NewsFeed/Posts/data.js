@@ -92,9 +92,9 @@ const posts = [
     imageSource: `https://picsum.photos/3840/2160?random=${i + 6}`,
     caption: `Random caption ${i + 6}`,
     likeCount: Math.floor(Math.random() * 200) + 50,
-    createTime: `2025-03-${String(5 - Math.floor(i / 3)).padStart(2, '0')}T${String(12 - (i % 6)).padStart(2, '0')}:00:00`,
-    updateTime: `2025-03-${String(5 - Math.floor(i / 3)).padStart(2, '0')}T${String(12 - (i % 6) + 1).padStart(2, '0')}:00:00`,
-  }))
+    createTime: `2025-03-${String(5 - Math.floor(i / 3)).padStart(2, "0")}T${String(12 - (i % 6)).padStart(2, "0")}:00:00`,
+    updateTime: `2025-03-${String(5 - Math.floor(i / 3)).padStart(2, "0")}T${String(12 - (i % 6) + 1).padStart(2, "0")}:00:00`,
+  })),
 ];
 
 export default posts;

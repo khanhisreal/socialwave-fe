@@ -6,6 +6,7 @@ import CreatingPost from "./CreatingPost/CreatingPost";
 import List from "./Posts/List";
 import Grid from "./Posts/Grid";
 import RightSideBar from "../../components/RightSideBar/RightSideBar";
+import Footer from "../../components/Footer/Footer";
 
 function NewsFeed() {
   const [layout, setLayout] = useState("list");
@@ -17,6 +18,7 @@ function NewsFeed() {
         <StoryBar />
         <CreatingPost handleLayout={setLayout} layout={layout} />
         {layout === "list" ? <List /> : <Grid />}
+        <Footer />
       </div>
       <RightSideBar />
     </div>

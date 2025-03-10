@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styles from "./RightSideBar.module.css";
 import UserIndicator from "./UserIndicator";
 import posts from "./data.js";
@@ -60,7 +59,7 @@ export default function RightSideBar() {
             </div>
           </div>
         </div>
-        <div style={{height: "50px"}}></div>
+        <div style={{ height: "50px" }}></div>
       </div>
     </div>
   );

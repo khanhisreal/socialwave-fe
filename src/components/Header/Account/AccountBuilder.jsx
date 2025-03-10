@@ -1,4 +1,4 @@
-import styles from "../../Header/Header.module.css";
+import styles from "./Account.module.css";
 import PropTypes from "prop-types";
 
 import { IoIosSettings } from "react-icons/io";

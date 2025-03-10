@@ -1,4 +1,4 @@
-import styles from "../../Header/Header.module.css";
+import styles from "./Notification.module.css";
 import noResultImage from "../../../assets/images/Header/notification.png";
 import notifications from "./dummydata";
 

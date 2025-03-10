@@ -20,13 +20,11 @@
 }
 
 .comment .caption .bottom span {
-    font-family: "Paragraph";
-    font-size: 80%;
-    color: #373737;
+  font-family: "Paragraph";
+  font-size: 80%;
+  color: #373737;
 }
 
 .comment .caption span {
   font-family: "Bold";
 }
-
-

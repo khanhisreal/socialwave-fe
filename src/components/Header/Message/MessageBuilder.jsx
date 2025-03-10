@@ -1,4 +1,4 @@
-import styles from "../../Header/Header.module.css";
+import styles from "./Message.module.css";
 import PropTypes from "prop-types";
 
 export default function MessageBuilder({

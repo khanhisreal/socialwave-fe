@@ -5,11 +5,7 @@ import Picker from "emoji-picker-react";
 
 // regHeart: normal hear - faheart: liked post
 // regBookmark: normal bookmark - fabookmark: saved post
-import {
-  FaRegHeart,
-  FaRegComment,
-  FaRegBookmark,
-} from "react-icons/fa";
+import { FaRegHeart, FaRegComment, FaRegBookmark } from "react-icons/fa";
 import { MdInsertEmoticon } from "react-icons/md";
 
 export default function Bottom({ likeCount }) {

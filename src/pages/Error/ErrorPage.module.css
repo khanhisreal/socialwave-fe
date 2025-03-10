@@ -38,15 +38,15 @@ main p {
 }
 
 main a {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 20px;
-    text-decoration: none;
-    color: white;
-    background-color: #007bff;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
-    transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
 }
 
 main a:hover {

@@ -37,7 +37,7 @@ export default function StoryBar() {
         <div className={styles.stories}>
           <div
             className={styles.storyWrapper}
-            style={{ transform: `translateX(-${index * 110}px)` }}
+            style={{ transform: `translateX(-${index * 70}px)` }}
           >
             {stories.map((story) => (
               <StoryBuilder

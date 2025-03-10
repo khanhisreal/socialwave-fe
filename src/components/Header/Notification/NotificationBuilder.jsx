@@ -1,4 +1,4 @@
-import styles from "../../Header/Header.module.css";
+import styles from "./Notification.module.css";
 import PropTypes from "prop-types";
 
 import { IoMdPersonAdd } from "react-icons/io";

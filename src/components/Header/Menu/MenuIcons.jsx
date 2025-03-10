@@ -1,13 +1,9 @@
 import { TbBrandMessengerFilled } from "react-icons/tb";
-
 import { FaUserFriends, FaBookmark } from "react-icons/fa";
-
 import { IoMdPersonAdd } from "react-icons/io";
-
 import { FaNewspaper } from "react-icons/fa6";
-
 import MenuIconsBuilder from "./MenuIconsBuilder";
-import styles from "../../Header/Header.module.css";
+import styles from "./Menu.module.css";
 
 const friends = (
   <MenuIconsBuilder

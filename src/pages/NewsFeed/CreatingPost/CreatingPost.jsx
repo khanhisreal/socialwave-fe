@@ -7,7 +7,7 @@ import dummyAvatar from "../../../assets/images/Pages/dummy_avatar.png";
 
 import userData from "./data";
 import { IoGrid } from "react-icons/io5";
-import { FaThList  } from "react-icons/fa";
+import { FaThList } from "react-icons/fa";
 
 export default function CreatingPost({ handleLayout, layout }) {
   const [showModal, setShowModal] = useState(false);
@@ -37,7 +37,7 @@ export default function CreatingPost({ handleLayout, layout }) {
             onClick={() => handleLayout("list")}
             className={layout === "list" && styles.active}
           >
-            <FaThList  className={styles.icon} /> List view
+            <FaThList className={styles.icon} /> List view
           </button>
           <button
             onClick={() => handleLayout("grid")}
@@ -47,7 +47,7 @@ export default function CreatingPost({ handleLayout, layout }) {
           </button>
         </div>
       </div>
-      {showModal && <FileUploader />}
+      {showModal && <FileUploader handleShowModal={setShowModal} />}
     </div>
   );
 }

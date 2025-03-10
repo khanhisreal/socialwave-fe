@@ -7,6 +7,7 @@ import Modal from "./Modal/Modal";
 
 import { FaCameraRetro, FaImages } from "react-icons/fa";
 import Grid from "./Posts/Grid";
+import Footer from "../../components/Footer/Footer";
 
 export default function PersonalWall() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,6 +82,7 @@ export default function PersonalWall() {
       <div className={styles.posts}>
         <Grid />
       </div>
+      <Footer />
     </div>
   );
 }

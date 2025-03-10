@@ -1,7 +1,12 @@
 import styles from "./Pagination.module.css";
 import PropTypes from "prop-types";
 
-export default function Pagination({ totalPosts, postsPerPage, currentPage, handleCurrentPage }) {
+export default function Pagination({
+  totalPosts,
+  postsPerPage,
+  currentPage,
+  handleCurrentPage,
+}) {
   const totalPages = Math.ceil(totalPosts / postsPerPage);
   const pages = [];
 
@@ -41,7 +46,9 @@ export default function Pagination({ totalPosts, postsPerPage, currentPage, hand
         {currentPage < totalPages - 1 && (
           <>
             {currentPage < totalPages - 2 && <span>...</span>}
-            <button onClick={() => handleCurrentPage(totalPages)}>{totalPages}</button>
+            <button onClick={() => handleCurrentPage(totalPages)}>
+              {totalPages}
+            </button>
           </>
         )}
       </div>

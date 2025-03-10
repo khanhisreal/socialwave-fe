@@ -1,4 +1,4 @@
-import styles from "../../Header/Header.module.css";
+import styles from "./Account.module.css";
 import dummyAvatar from "../../../assets/images/Header/dummy_avatar.png";
 import { Link } from "react-router-dom";
 
@@ -17,10 +17,7 @@ export default function Account() {
       <h3>Account</h3>
       <div className={styles.accountContainer}>
         <div className={styles.inspect}>
-          <Link
-            to={"/wall"}
-            className={styles.infor}
-          >
+          <Link to={"/wall"} className={styles.infor}>
             <img src={dummyAvatar} alt="" />
             <p>John Doe</p>
           </Link>

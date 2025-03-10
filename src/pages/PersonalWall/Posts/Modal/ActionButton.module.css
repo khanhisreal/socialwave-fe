@@ -29,12 +29,12 @@
 }
 
 .modalContent a:first-child {
-    color: red;
+  color: red;
 }
 
 .modalContent a:nth-child(2) {
-    border-top: 1px solid #ececec;
-    border-bottom: 1px solid #ececec;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
 }
 
 .modalContent a:hover {
