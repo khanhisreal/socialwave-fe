@@ -1,32 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-//for css module
-import styles from "./Header.module.css";
-//logo socialwave for the platform
-import logo from "../../assets/images/Header/socialwave-logo.png";
-//logo of the user
-import dummyProfilePic from "../../assets/images/Header/dummy_avatar.png";
-//indicator data for unread message/notification
-import indicator from "./Indicator";
-
+import { MdApps, MdMessage } from "react-icons/md";
+import { FaBell } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 import HeaderIconBuilder from "./HeaderIconBuilder";
 import Menu from "./Menu/Menu";
 import Message from "./Message/Message";
 import Notification from "./Notification/Notification";
 import Account from "./Account/Account";
-
-import { MdApps, MdMessage } from "react-icons/md";
-import { FaBell } from "react-icons/fa";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import styles from "./Header.module.css";
+import logo from "../../assets/images/Header/socialwave-logo.png";
+import api from "../../api/api";
+//indicator data for unread message/notification
+import indicator from "./Indicator";
 
 export default function Header() {
   const [data, setData] = useState("");
+  const [headerInfor, setHeaderInfor] = useState({});
 
   function assignData(value) {
     //if the value is the same as the current data, set data to null
     setData((prevData) => (prevData === value ? null : value));
   }
+
+  // fetch the avatar
+  useEffect(() => {
+    const fetchAvatar = async () => {
+      try {
+        const response = await api.get("http://localhost:8080/api/users/1");
+        setHeaderInfor({
+          avatar: response.data.avatarSource,
+          name: response.data.name,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchAvatar();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -85,8 +97,8 @@ export default function Header() {
           // This shit is a prop, don't try to change it to module css!
           buttonClass={"accountParent"}
         >
-          <img src={dummyProfilePic} alt="" />
-          {data === "account" && <Account />}
+          <img src={headerInfor.avatar} alt="" />
+          {data === "account" && <Account headerInfor={headerInfor} />}
         </HeaderIconBuilder>
       </div>
     </div>

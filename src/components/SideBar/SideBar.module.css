@@ -18,11 +18,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .container a:hover {
   background-color: #dbdbdb;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase box shadow on hover */
+  transform: translateY(-2px); /* Slightly lift the element on hover */
 }
 
 .container a .illustration {

@@ -20,8 +20,8 @@
 .container .mainArea .left {
   width: 80%;
   background-color: var(--whitish);
-  border-radius: 5px;
   padding: 10px;
+  border-radius: 2.5px;
 }
 
 .container .mainArea .left .top {
@@ -88,11 +88,11 @@
 .container .mainArea .right {
   width: 18%;
   background-color: var(--whitish);
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 2.5px;
 }
 
 .container .mainArea .right button {

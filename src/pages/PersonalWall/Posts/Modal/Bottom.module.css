@@ -29,30 +29,34 @@
 }
 
 .inputBar {
-  height: 33.33%;
-  padding-top: 5px;
+  height: 50%;
+  min-height: 33.33%;
   border-top: 1px solid var(--lightgrey);
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
 }
 
-.inputBar button:nth-child(1) {
+.inputBar .emojiBtn {
   padding: 5px;
   width: 10%;
   font-size: 130%;
   position: relative;
 }
 
-.inputBar button:nth-child(1) .emojiPicker {
+.inputBar .emojiBtn .emojiPicker {
   position: absolute;
   bottom: 0;
   right: 50px;
 }
 
-.inputBar input {
+.inputBar .input {
   height: 100%;
-  width: 80%;
+  width: 100%;
+  padding: 5px;
 }
 
-.inputBar button:nth-child(3) {
+.inputBar .btnPost {
   padding: 5px;
   width: 10%;
 }

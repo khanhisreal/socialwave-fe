@@ -1,16 +1,31 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { IoGrid } from "react-icons/io5";
+import { FaThList } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./CreatingPost.module.css";
 import FileUploader from "../../../components/FileUploader/FileUploader";
-import dummyAvatar from "../../../assets/images/Pages/dummy_avatar.png";
-
-import userData from "./data";
-import { IoGrid } from "react-icons/io5";
-import { FaThList } from "react-icons/fa";
+import api from "../../../api/api";
 
 export default function CreatingPost({ handleLayout, layout }) {
   const [showModal, setShowModal] = useState(false);
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const fetchAvatar = async () => {
+      try {
+        const response = await api.get("/api/users/1");
+        setUserData({
+          name: response.data.name,
+          avatar: response.data.avatarSource,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchAvatar();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -19,7 +34,7 @@ export default function CreatingPost({ handleLayout, layout }) {
           <div className={styles.top}>
             <span>
               <Link to={"/wall"}>
-                <img src={dummyAvatar} alt="" />
+                <img src={userData.avatar} alt="user avatar" />
               </Link>
             </span>
             <button onClick={() => setShowModal(true)}>
@@ -35,13 +50,13 @@ export default function CreatingPost({ handleLayout, layout }) {
           <span>Layout</span>
           <button
             onClick={() => handleLayout("list")}
-            className={layout === "list" && styles.active}
+            className={layout === "list" ? styles.active : ""}
           >
             <FaThList className={styles.icon} /> List view
           </button>
           <button
             onClick={() => handleLayout("grid")}
-            className={layout === "grid" && styles.active}
+            className={layout === "grid" ? styles.active : ""}
           >
             <IoGrid className={styles.icon} /> Grid view
           </button>

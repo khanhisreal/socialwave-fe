@@ -17,7 +17,6 @@ export default function Bottom({ likeCount }) {
   }
 
   function onEmojiClick(emojiData) {
-    console.log(emojiData.emoji); // Check if emoji is correctly logged
     setInputStr((prevInput) => prevInput + emojiData.emoji);
     setIsHidden(true);
   }
@@ -45,7 +44,7 @@ export default function Bottom({ likeCount }) {
         </span>
       </div>
       <div className={styles.inputBar}>
-        <button>
+        <button className={styles.emojiBtn}>
           <MdInsertEmoticon onClick={handleIsHidden} />
           {!isHidden && (
             <Picker
@@ -58,9 +57,10 @@ export default function Bottom({ likeCount }) {
           type="text"
           placeholder="Add a comment..."
           value={inputStr}
+          className={styles.input}
           onChange={(e) => setInputStr(e.target.value)}
         />
-        <button>Post</button>
+        <button className={styles.btnPost}>Post</button>
       </div>
     </div>
   );

@@ -60,7 +60,7 @@
   background-color: var(--whitish);
   overflow: hidden;
   display: flex;
-  border-radius: 5px;
+  border-radius: 2.5px;
 }
 
 .container .stories .story {

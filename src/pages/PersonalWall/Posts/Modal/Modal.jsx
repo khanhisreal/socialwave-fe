@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import styles from "./Modal.module.css";
 import PropTypes from "prop-types";
 import fetchPosts from "../data";
 import temp from "../../../../assets/images/Pages/dummy_avatar.png";
-import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import Bottom from "./Bottom";
 

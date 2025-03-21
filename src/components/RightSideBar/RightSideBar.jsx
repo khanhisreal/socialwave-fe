@@ -11,7 +11,7 @@ export default function RightSideBar() {
         <div className={styles.wrapper}>
           <div className={styles.users}>
             {posts.map((post) => (
-              <UserIndicator key={post.id} post={post} />
+              <UserIndicator key={post.postId} post={post} />
             ))}
           </div>
           <button>Explore all of SocialWave</button>

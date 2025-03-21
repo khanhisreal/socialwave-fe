@@ -128,4 +128,8 @@
   box-shadow: 0 0 3px rgba(224, 93, 93, 0.8);
 }
 
+.container .right .accountParent img {
+  object-fit: cover;
+}
+
 /* end right  */

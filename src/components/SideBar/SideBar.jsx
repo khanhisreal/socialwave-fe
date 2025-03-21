@@ -1,19 +1,34 @@
 import { Link } from "react-router-dom";
 import styles from "./SideBar.module.css";
-import userData from "../data";
-import dummyAvatar from "../../assets/images/Pages/dummy_avatar.png";
 import { FaUserFriends, FaBookmark, FaPenAlt } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 import { FaUserClock } from "react-icons/fa6";
 import { IoDiamondOutline } from "react-icons/io5";
+import { useEffect, useState } from "react";
+import api from "../../api/api";
 
 export default function SideBar() {
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const fetchAvatar = async () => {
+      try {
+        const response = await api.get("http://localhost:8080/api/users/1");
+        setUserData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchAvatar();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <Link to="/wall">
           <div className={styles.illustration}>
-            <img src={dummyAvatar} alt="" />
+            <img src={userData.avatarSource} alt="" />
           </div>
           <p>{userData.name}</p>
         </Link>

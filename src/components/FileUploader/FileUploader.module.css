@@ -79,6 +79,32 @@
   margin-top: 15px;
 }
 
+.dropArea form {
+  position: relative;
+  background-color: white;
+}
+
+.dropArea form .input {
+  width: 90%;
+  padding: 10px;
+  border-radius: 2.5px;
+  margin: 5px 0px 0px 0px;
+}
+
+.dropArea form #pickerWrapper {
+  position: absolute;
+  bottom: 0;
+  top: 20px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.dropArea form .emojiPicker {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+}
+
 .functionButtons {
   display: flex;
   justify-content: end;
