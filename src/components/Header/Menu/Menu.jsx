@@ -6,11 +6,10 @@ import { MdEmojiEvents } from "react-icons/md";
 
 import menuIcons from "./MenuIcons";
 import styles from "./Menu.module.css";
-import noResultImage from "../../../assets/images/Header/menu.webp";
 
 const noResults = (
   <div>
-    <img src={noResultImage} alt="" />
+    <img src="/menu.webp" alt="" />
     <h3>We didn&apos;t find anything</h3>
     <p>
       Try different keywords or make sure that everything is spelt correctly.

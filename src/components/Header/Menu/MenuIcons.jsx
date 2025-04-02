@@ -9,7 +9,7 @@ const friends = (
   <MenuIconsBuilder
     icon={<FaUserFriends className={styles.icon} />}
     title="Friends"
-    description="Find your friends on Socialwave"
+    description="Find your friends on SocialWave"
   />
 );
 
@@ -17,7 +17,7 @@ const newsFeed = (
   <MenuIconsBuilder
     icon={<FaNewspaper className={styles.icon} />}
     title="News feed"
-    description="See what's happening on Socialwave"
+    description="See what's happening on SocialWave"
   />
 );
 

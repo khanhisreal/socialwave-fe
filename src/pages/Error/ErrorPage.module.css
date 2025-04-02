@@ -43,7 +43,7 @@ main a {
   margin-top: 20px;
   text-decoration: none;
   color: white;
-  background-color: #007bff;
+  background-color: var(--green);
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
   transition: box-shadow 0.3s ease; /* Add transition for smooth effect */

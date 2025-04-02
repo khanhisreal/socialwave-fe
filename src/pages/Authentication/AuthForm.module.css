@@ -1,0 +1,160 @@
+.authContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  width: 80%;
+  padding: 20px;
+}
+
+.authBackground {
+  flex: 1;
+  max-width: 500px;
+  text-align: left;
+  padding: 20px;
+}
+
+.authBackground h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.authBackground p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--whitish);
+}
+
+/* Main Auth Box */
+.authBox {
+  background: var(--whitish);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+  min-height: 350px;
+  overflow: hidden;
+  transition:
+    min-height 0.4s ease-in-out,
+    max-height 0.4s ease-in-out;
+}
+
+/* Adjust dynamically */
+.loginBox {
+  min-height: 300px;
+  max-height: 400px;
+}
+
+.signupBox {
+  min-height: 500px;
+  max-height: 700px;
+}
+
+.authBox .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
+}
+
+.authBox .wrapper img {
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.authBox .wrapper h2 {
+  font-size: 180%;
+}
+
+.authBox h2 {
+  color: var(--green);
+}
+
+.authImage {
+  width: 22%;
+  margin-bottom: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  text-align: left;
+}
+
+.input,
+.textarea {
+  margin: 5px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.textarea {
+  resize: none;
+}
+
+.imageInputContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.imageInputContainer .container {
+  padding: 5px 0px;
+}
+
+.imageInputContainer .container input {
+  margin-right: 5px;
+}
+
+.button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #04724d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #035a3a;
+}
+
+.switchBtn {
+  background: none;
+  color: #04724d;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.switchBtn:hover {
+  color: #035a3a;
+}
+
+.successMessage {
+  color: green;
+  text-align: center;
+  margin-bottom: 10px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .authBackground {
+    display: none;
+  }
+
+  .authBox {
+    width: 47vw;
+    max-width: 80vw;
+    padding: 4vw;
+  }
+}

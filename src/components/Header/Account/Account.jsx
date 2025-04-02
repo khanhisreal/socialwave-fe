@@ -20,9 +20,9 @@ export default function Account({ headerInfor }) {
             <p>{headerInfor.name}</p>
           </Link>
           <hr />
-          <a href="#" onClick={(e) => e.stopPropagation()}>
+          <Link to={""} onClick={(e) => e.stopPropagation()}>
             <MdLogout className={styles.icon} /> Log out
-          </a>
+          </Link>
         </div>
         <div className={styles.accountButtons}>
           <AccountBuilder
@@ -36,7 +36,7 @@ export default function Account({ headerInfor }) {
           <AccountBuilder buttonType={"contactUs"} title={"Contact us"} />
         </div>
         <p className={styles.mark}>
-          Socialwave © {getYear()}. All rights reserved
+          SocialWave © {getYear()}. All rights reserved
         </p>
       </div>
     </div>

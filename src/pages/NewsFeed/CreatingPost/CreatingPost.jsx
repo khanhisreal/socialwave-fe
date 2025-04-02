@@ -27,6 +27,11 @@ export default function CreatingPost({ handleLayout, layout }) {
     fetchAvatar();
   }, []);
 
+  const userAvatar =
+    userData.avatar !== null
+      ? userData.avatar
+      : "./user_avatar_placeholder.jpg";
+
   return (
     <div className={styles.container}>
       <div className={styles.mainArea}>
@@ -34,7 +39,10 @@ export default function CreatingPost({ handleLayout, layout }) {
           <div className={styles.top}>
             <span>
               <Link to={"/wall"}>
-                <img src={userData.avatar} alt="user avatar" />
+                <img
+                  src={`http://localhost:8080${userAvatar}`}
+                  alt="user avatar"
+                />
               </Link>
             </span>
             <button onClick={() => setShowModal(true)}>

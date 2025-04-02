@@ -1,5 +1,4 @@
 import styles from "./Notification.module.css";
-import noResultImage from "../../../assets/images/Header/notification.png";
 import notifications from "./dummydata";
 
 import NotificationBuilder from "./NotificationBuilder";
@@ -7,7 +6,7 @@ import { useState } from "react";
 
 const empty = (
   <div className={styles.empty}>
-    <img src={noResultImage} alt="" />
+    <img src="/notification.png" alt="" />
     <h3>No notifications yet</h3>
     <p>When you get notifications, they’ll show up here.</p>
   </div>

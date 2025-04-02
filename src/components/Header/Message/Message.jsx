@@ -1,16 +1,14 @@
 import { useState } from "react";
 
 import data from "./dummydata";
-// import styles from "../../Header/Header.module.css";
 import styles from "./Message.module.css";
-import noResultImage from "../../../assets/images/Header/message.png";
 import MessageBuilder from "./MessageBuilder";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaExpandArrowsAlt } from "react-icons/fa";
 
 const noResults = (
   <div className={styles.empty}>
-    <img src={noResultImage} alt="" />
+    <img src="/message.png" alt="" />
     <h3>No chats available</h3>
     <p>No chats found. Start chatting.</p>
   </div>

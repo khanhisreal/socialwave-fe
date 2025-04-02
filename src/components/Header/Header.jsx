@@ -9,7 +9,6 @@ import Message from "./Message/Message";
 import Notification from "./Notification/Notification";
 import Account from "./Account/Account";
 import styles from "./Header.module.css";
-import logo from "../../assets/images/Header/socialwave-logo.png";
 import api from "../../api/api";
 //indicator data for unread message/notification
 import indicator from "./Indicator";
@@ -28,8 +27,13 @@ export default function Header() {
     const fetchAvatar = async () => {
       try {
         const response = await api.get("http://localhost:8080/api/users/1");
+        const userAvatar =
+          response.data.avatarSource !== null
+            ? response.data.avatarSource
+            : "./user_avatar_placeholder.jpg";
+
         setHeaderInfor({
-          avatar: response.data.avatarSource,
+          avatar: `http://localhost:8080${userAvatar}`,
           name: response.data.name,
         });
       } catch (error) {
@@ -43,12 +47,12 @@ export default function Header() {
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        <Link to="/">
-          <img src={logo} alt="socialwave logo" />
+        <Link to="newsfeed">
+          <img src="/socialwave-logo.png" alt="socialwave logo" />
         </Link>
         <div className={styles.searchBar}>
           <FaMagnifyingGlass className={styles.icon} />
-          <input type="text" placeholder="Search Socialwave" />
+          <input type="text" placeholder="Search SocialWave" />
         </div>
       </div>
       <div className={styles.right}>

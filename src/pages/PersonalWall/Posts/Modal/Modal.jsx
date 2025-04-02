@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styles from "./Modal.module.css";
 import PropTypes from "prop-types";
 import fetchPosts from "../data";
-import temp from "../../../../assets/images/Pages/dummy_avatar.png";
 import Comment from "./Comment";
 import Bottom from "./Bottom";
 
@@ -46,7 +45,7 @@ export default function Modal({
         <div className={styles.right}>
           <div className={styles.top}>
             <div className={styles.content}>
-              <img src={temp} alt="" className={styles.avatar} />
+              <img src="/dummy_avatar.png" alt="" className={styles.avatar} />
               <p className={styles.caption}>
                 <span>{modalData.username}</span> {modalData.caption}
               </p>

@@ -23,12 +23,17 @@ export default function SideBar() {
     fetchAvatar();
   }, []);
 
+  const userAvatar =
+    userData.avatarSource !== null
+      ? userData.avatarSource
+      : "./user_avatar_placeholder.jpg";
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <Link to="/wall">
           <div className={styles.illustration}>
-            <img src={userData.avatarSource} alt="" />
+            <img src={`http://localhost:8080${userAvatar}`} alt="" />
           </div>
           <p>{userData.name}</p>
         </Link>

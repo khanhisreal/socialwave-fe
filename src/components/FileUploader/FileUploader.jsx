@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { MdInsertEmoticon } from "react-icons/md";
 import EmojiPicker from "emoji-picker-react";
 import styles from "./FileUploader.module.css";
-import uploadImg from "../../assets/images/Pages/upload_icon.png";
 import PropTypes from "prop-types";
 import api from "../../api/api";
 
@@ -94,7 +93,7 @@ export default function FileUploader({ handleShowModal }) {
         hidden
       />
       <div className={styles.selectImg}>
-        <img src={uploadImg} alt="" />
+        <img src="/upload_icon.png" alt="" />
         <p>
           Drag and drop or click here
           <br /> to upload image

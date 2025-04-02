@@ -36,6 +36,11 @@ export default function PersonalWall() {
     fetchData();
   }, []);
 
+  const userAvatar =
+    userData.avatarSource !== null
+      ? `http://localhost:8080${userData.avatarSource}`
+      : "./user_avatar_placeholder.jpg";
+
   return (
     <div className={styles.container}>
       <div className={styles.userAvatarAndCover}>
@@ -44,9 +49,9 @@ export default function PersonalWall() {
           {/* Trigger the Modal */}
           <img
             id={styles.myImg}
-            src={userData.avatarSource}
+            src={userAvatar}
             alt="User Avatar"
-            onClick={() => openModal(userData.avatarSource, `${userData.name}`)}
+            onClick={() => openModal(userAvatar, `${userData.name}`)}
           />
           <a href="#" className={styles.addAvatar}>
             <FaCameraRetro className={styles.avatarLogo} />
