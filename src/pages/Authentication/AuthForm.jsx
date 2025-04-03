@@ -4,11 +4,20 @@ import api from "../../api/api";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [fieldIsValid, setFieldIsValid] = useState({
+    name: { bool: true, status: "" },
+    username: { bool: true, status: "" },
+    password: { bool: true, status: "" },
+  });
+  const [fieldCount, setFieldCount] = useState({
+    name: "",
+    username: "",
+    password: "",
+  });
   const [enteredValueSignIn, setEnteredValueSignIn] = useState({
     username: "",
     password: "",
   });
-  const [usernameAvailable, setUsernameAvailable] = useState(null);
 
   function handleInputChangeSignIn(value, identifier) {
     setEnteredValueSignIn((prev) => ({
@@ -17,32 +26,164 @@ const AuthForm = () => {
     }));
   }
 
+  const handleName = (value, field) => {
+    setFieldCount((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+
+    const specialChars = /[`!@#$%^&*()_+\-=\\[\]{};':"\\|,.<>\\/?~]/;
+
+    if (specialChars.test(value)) {
+      setFieldIsValid((prev) => ({
+        ...prev,
+        [field]: {
+          bool: false,
+          status: "⚠️ Name cannot contain special characters",
+        },
+      }));
+    } else {
+      setFieldIsValid((prev) => ({
+        ...prev,
+        [field]: {
+          bool: true,
+          status: "✅ Name is valid",
+        },
+      }));
+    }
+  };
+
+  const handleUsername = async (value, field) => {
+    setFieldCount((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+
+    const specialChars = /^[\w.]+$/;
+
+    // Check for special characters first
+    if (!specialChars.test(value)) {
+      setFieldIsValid((prev) => ({
+        ...prev,
+        [field]: {
+          bool: false,
+          status: "⚠️ Invalid username",
+        },
+      }));
+      return; // Exit early if the username is invalid
+    }
+
+    try {
+      // Perform the username check only if the value is valid
+      const isAvailable = await checkUsernameExists(value);
+
+      // Update state only after the check is done
+      setFieldIsValid((prev) => ({
+        ...prev,
+        [field]: {
+          bool: isAvailable,
+          status: isAvailable
+            ? "✅ Username is available"
+            : "⚠️ Username is taken",
+        },
+      }));
+    } catch (error) {
+      console.error("Error checking username availability:", error);
+      setFieldIsValid((prev) => ({
+        ...prev,
+        [field]: {
+          bool: false,
+          status: "⚠️ Error checking username availability",
+        },
+      }));
+    }
+  };
+
   const checkUsernameExists = async (username) => {
     try {
       const response = await fetch(
         `http://localhost:8080/api/users/track?username=${username}`,
       );
       const result = await response.json();
-      setUsernameAvailable(result);
-      return result;
+      return result; // Expecting a boolean
     } catch (error) {
       console.error("Error checking username availability:", error);
+      return false; // Default to unavailable in case of an error
+    }
+  };
+
+  const handlePassword = (value, field) => {
+    setFieldCount((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+
+    const specialChars = /[`!@#$%^&*()_+\-=\\[\]{};':"\\|,.<>\\/?~]/;
+
+    if (!/\d/.test(value)) {
+      //doesn't contain numbers
+      setFieldIsValid((prev) => ({
+        ...prev,
+        [field]: {
+          bool: false,
+          status: "⚠️ Password must contain numbers",
+        },
+      }));
+    } else if (/^\d+$/.test(value)) {
+      //contains solely numbers
+      setFieldIsValid((prev) => ({
+        ...prev,
+        [field]: {
+          bool: false,
+          status: "⚠️ Password must contain letters",
+        },
+      }));
+    } else if (!specialChars.test(value)) {
+      //doesn't contain special characters
+      setFieldIsValid((prev) => ({
+        ...prev,
+        [field]: {
+          bool: false,
+          status: "⚠️ Password must contain special characters",
+        },
+      }));
+    } else {
+      setFieldIsValid((prev) => ({
+        ...prev,
+        [field]: {
+          bool: true,
+          status: "✅ Password is valid",
+        },
+      }));
     }
   };
 
   async function handleSubmit(event) {
     event.preventDefault();
 
+    // Check if any field is invalid
+    if (
+      !fieldIsValid.name.bool ||
+      !fieldIsValid.username.bool ||
+      !fieldIsValid.password.bool
+    ) {
+      let errorMessage = "";
+
+      // Build error message based on invalid fields
+      if (!fieldIsValid.name.bool)
+        errorMessage += fieldIsValid.name.status + "\n";
+      if (!fieldIsValid.username.bool)
+        errorMessage += fieldIsValid.username.status + "\n";
+      if (!fieldIsValid.password.bool)
+        errorMessage += fieldIsValid.password.status + "\n";
+
+      // Alert the user with the status of invalid fields
+      alert(errorMessage);
+      return;
+    }
+
     if (!isLogin) {
       const formData = new FormData(event.target);
-      const data = Object.fromEntries(formData.entries());
-
-      // Ensure username availability before proceeding
-      const isAvailable = await checkUsernameExists(data.username);
-      if (!isAvailable) {
-        alert("Username is already taken. Please choose another one.");
-        return;
-      }
 
       if (formData.get("bio") === "") {
         formData.set("bio", "no bio yet");
@@ -94,36 +235,60 @@ const AuthForm = () => {
                 placeholder="Name"
                 className={styles.input}
                 name="name"
+                onChange={(event) => handleName(event.target.value, "name")}
+                onBlur={() =>
+                  setFieldCount((prev) => ({
+                    ...prev,
+                    ["name"]: "",
+                  }))
+                }
                 required
+                maxLength={55}
               />
+              {fieldCount.name !== "" && fieldIsValid.name.status}
               <input
                 type="text"
                 placeholder="Username"
                 className={styles.input}
                 name="username"
-                onBlur={(event) => checkUsernameExists(event.target.value)}
+                onChange={(event) =>
+                  handleUsername(event.target.value, "username")
+                }
+                onBlur={() =>
+                  setFieldCount((prev) => ({
+                    ...prev,
+                    ["username"]: "",
+                  }))
+                }
                 required
+                maxLength={45}
               />
-              {usernameAvailable !== null && (
-                <p>
-                  {usernameAvailable
-                    ? "✅ Username is available"
-                    : "❌ Username is taken"}
-                </p>
-              )}
+              {fieldCount.username !== "" && fieldIsValid.username.status}
               <input
                 type="password"
                 placeholder="Password"
                 className={styles.input}
                 name="password"
                 required
+                onChange={(event) =>
+                  handlePassword(event.target.value, "password")
+                }
+                onBlur={() =>
+                  setFieldCount((prev) => ({
+                    ...prev,
+                    ["password"]: "",
+                  }))
+                }
+                minLength={8}
               />
+              {fieldCount.password !== "" && fieldIsValid.password.status}
               <input
                 type="email"
                 placeholder="Email"
                 className={styles.input}
                 name="email"
                 required
+                maxLength={255}
               />
               <label htmlFor="avatar">Upload avatar (optional)</label>
               <input
@@ -136,6 +301,7 @@ const AuthForm = () => {
                 placeholder="Bio (optional)"
                 className={styles.textarea}
                 name="bio"
+                maxLength={130}
               ></textarea>
             </>
           )}
