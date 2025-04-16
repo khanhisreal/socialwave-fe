@@ -5,7 +5,7 @@ export default function Root() {
   const location = useLocation();
 
   //Hide the header only on the authentication page
-  const hideHeader = location.pathname === "/auth" || location.pathname === "/";
+  const hideHeader = location.pathname === "/";
 
   return (
     <>

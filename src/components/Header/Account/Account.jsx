@@ -20,7 +20,7 @@ export default function Account({ headerInfor }) {
             <p>{headerInfor.name}</p>
           </Link>
           <hr />
-          <Link to={""} onClick={(e) => e.stopPropagation()}>
+          <Link to={"/"} onClick={(e) => e.stopPropagation()}>
             <MdLogout className={styles.icon} /> Log out
           </Link>
         </div>
