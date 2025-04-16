@@ -1,0 +1,46 @@
+.container {
+  width: 90%;
+  padding: 1px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: start;
+}
+
+.container .postContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+  gap: 10px; /* Adjust spacing between grid items */
+}
+
+.container .postContainer p {
+  color: black;
+}
+
+.container .post {
+  width: 100%; /* Ensures each post fits within the grid */
+  padding: 0;
+  cursor: pointer;
+}
+
+.container .post img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media screen and (max-width: 1000px) {
+  .container .postContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 columns per row */
+    gap: 10px; /* Adjust spacing between grid items */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container .postContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 3 columns per row */
+    gap: 10px; /* Adjust spacing between grid items */
+  }
+}

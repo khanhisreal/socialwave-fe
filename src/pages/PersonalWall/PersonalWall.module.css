@@ -1,0 +1,242 @@
+.container {
+  height: auto;
+  width: 100%;
+  background-color: white;
+  margin-top: 300px;
+  border-top-left-radius: 170px;
+  border-top-right-radius: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.container .userAvatarAndCover {
+  position: relative;
+  width: 100%;
+}
+
+.container .userAvatarAndCover .avatar {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  position: absolute;
+  left: calc(50% - 100px);
+  bottom: -100px;
+  border-radius: 50%;
+}
+
+.container .userAvatarAndCover .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.container .userAvatarAndCover .avatar img:hover {
+  opacity: 0.7;
+}
+
+.container .userAvatarAndCover .avatar .addAvatar {
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 50%;
+  position: absolute;
+  border: 7px solid white;
+  right: 8px;
+  bottom: 8px;
+}
+
+.container .userAvatarAndCover .avatar .addAvatar:hover {
+  background-color: gray;
+}
+
+.container .userAvatarAndCover .avatar a .uploadLogo {
+  font-size: 120%;
+}
+
+.container .userAvatarAndCover .addCover {
+  /* turn to white later  */
+  background-color: white;
+  display: inline-flex;
+  text-decoration: none;
+  align-items: center;
+  width: auto;
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  top: calc(50% - 40px);
+  left: -100px;
+  font-size: 80%;
+}
+
+.container .userAvatarAndCover .addCover:hover {
+  background-color: #ececec;
+}
+
+.container .userAvatarAndCover a p {
+  color: black;
+  margin-left: 5px;
+  font-size: 95%;
+}
+
+/* start modal  */
+
+.container .userAvatarAndCover .avatar .modal {
+  display: flex; /* Hidden by default */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  margin-top: 60px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.container .userAvatarAndCover .avatar .modalContent {
+  margin-top: 60px;
+  display: block;
+  border-radius: 0%;
+  width: 100%;
+  max-width: 400px;
+  /* Remove any hover effects */
+  pointer-events: none;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+.container .userAvatarAndCover .avatar #caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.container .userAvatarAndCover .avatar .modalContent,
+#caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 1000px) {
+  .container .userAvatarAndCover .avatar .modalContent {
+    width: 100%;
+  }
+}
+
+/* end modal  */
+
+.container .spaceHolder {
+  height: 120px;
+}
+
+.container .userInfor {
+  padding: 10px;
+  width: 70%;
+  max-width: 700px;
+}
+
+.container .userInfor .children {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.container .userInfor .children .child h1 {
+  color: black;
+  font-family: "Bold";
+  font-size: 130%;
+}
+
+.container .userInfor .children .child p {
+  color: black;
+  font-family: 120%;
+}
+
+.container .userInfor .bio {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.container .userInfor .bio p {
+  text-align: center;
+  width: 350px;
+  color: black;
+}
+
+.container .buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  max-width: 300px;
+}
+
+.container .buttons a {
+  padding: 7px 12px;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+  font-family: "Bold";
+}
+
+.container .buttons a:first-child {
+  background-color: var(--green);
+  color: white;
+}
+
+.container .buttons a:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.container .posts {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

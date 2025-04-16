@@ -1,0 +1,128 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 800;
+  width: 100vw;
+  height: 100vh;
+  top: 40px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.container {
+  display: flex;
+  width: 80%; /* Adjust as needed */
+  background-color: white;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  font-family: "Bold";
+  top: -40px;
+  right: -20px;
+  color: white;
+  cursor: pointer;
+  font-size: 150%;
+}
+
+.close:hover {
+  color: var(--lightgrey);
+}
+
+.left {
+  width: 56.25%; /* 16 / (16 + 9) * 100% */
+  position: relative;
+}
+
+.left img {
+  width: 100%;
+  height: 100%;
+}
+
+.right {
+  width: 43.75%; /* 100% - 56.25% */
+  padding: 20px; /* Adjust as needed */
+}
+
+.top {
+  height: 70%;
+  overflow: auto;
+}
+
+.top .content {
+  height: auto;
+  max-height: 20%;
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.top .content .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.top .content .caption {
+  display: inline-block;
+  width: calc(100% - 75px);
+  color: black;
+}
+
+.top .content .caption span {
+  font-family: "Bold";
+}
+
+.top .commentSection h3,
+p {
+  color: black;
+}
+
+.bottom {
+  height: 30%;
+}
+
+.togglePost {
+  position: absolute;
+  font-family: "Bold";
+  font-size: 200%;
+  top: -15px;
+  right: 7px;
+}
+
+@media screen and (max-width: 1060px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .right .top .commentSection {
+    display: none;
+  }
+}

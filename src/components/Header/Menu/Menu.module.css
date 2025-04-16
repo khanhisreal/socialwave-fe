@@ -1,0 +1,110 @@
+.menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  padding: 10px;
+  background-color: #eeeeee;
+  cursor: pointer;
+  /* for the whole menu - disable */
+  pointer-events: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu h3 {
+  color: black;
+  font-weight: bolder;
+}
+.menu .menuContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu .menuContainer .menuLeft,
+.menu .menuContainer .menuRight {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 5px;
+}
+
+.menu .menuContainer .menuRight {
+  height: 100%;
+}
+
+.menu .menuContainer .menuLeft .searchBar {
+  position: relative;
+  /* enable the pointer event for the search bar  */
+  pointer-events: auto;
+}
+
+.menu .menuContainer .menuLeft .searchBar input {
+  border: none;
+  background-color: #ececec;
+  border-radius: 30px;
+  padding: 12px 15px 12px 40px;
+  width: 100%;
+}
+
+.menu .menuContainer .menuLeft .searchBar input:focus {
+  outline: none;
+}
+
+.menu .menuContainer .menuLeft .searchBar .icon {
+  position: absolute;
+  z-index: 1000;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu .menuContainer .menuLeft .social {
+  margin-top: 15px;
+  height: 320px;
+  width: 270px;
+  overflow: auto;
+  /* enable pointer for the social buttons  */
+  pointer-events: auto;
+}
+
+.menu .menuContainer .menuLeft .social a {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  width: 100%;
+}
+
+.menu .menuContainer .menuLeft .social h4,
+.menu .menuContainer .menuRight h4 {
+  color: black;
+}
+
+.menu .menuContainer .menuLeft .social a:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+.menu .menuContainer .menuLeft .social a .icon {
+  margin-right: 15px;
+  width: 20px;
+}
+
+.menu .menuContainer .menuRight .create a {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  padding: 10px 10px;
+  width: 150px;
+  border-radius: 5px;
+  /* enable pointer event for create buttons  */
+  pointer-events: auto;
+}
+
+.menu .menuContainer .menuRight .create a:hover {
+  background-color: #f0f0f0;
+}
+
+.menu .menuContainer .menuRight .create a .icon {
+  margin-right: 10px;
+  width: 20px;
+}

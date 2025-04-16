@@ -1,0 +1,18 @@
+.container {
+  margin-top: 60px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  max-width: 600px;
+  width: 70%;
+  margin: 20px 0px 0px 0px;
+}
+
+@media screen and (max-width: 830px) {
+  .content {
+    width: 85%;
+  }
+}

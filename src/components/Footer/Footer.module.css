@@ -1,0 +1,28 @@
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.footerLinks a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: #000;
+}
+
+.footerCopy {
+  margin-top: 10px;
+}

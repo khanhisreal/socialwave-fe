@@ -1,0 +1,123 @@
+.container {
+  margin-top: 20px;
+}
+
+.container button {
+  transition: box-shadow 0.3s ease;
+}
+
+.container .mainArea {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left,
+.right {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.container .mainArea .left {
+  width: 80%;
+  background-color: var(--whitish);
+  padding: 10px;
+  border-radius: 2.5px;
+}
+
+.container .mainArea .left .top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0px;
+}
+
+.container .mainArea .left .top img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.container .mainArea .left .top img:hover {
+  transition: opacity 0.5s ease;
+  opacity: 0.8;
+}
+
+.container .mainArea .left .top span {
+  padding: 5px;
+  display: block;
+}
+
+.container .mainArea .left .top button {
+  background-color: rgb(229, 229, 229);
+  color: black;
+  display: inline-block;
+  max-width: 700px;
+  width: 85%;
+  height: fit-content;
+  padding: 10px 20px;
+  text-align: left;
+  align-self: center;
+  border-radius: 50px;
+}
+
+.container .mainArea .left .top button:hover {
+  transition: 0.2s ease;
+  background-color: lightgray;
+  color: black;
+}
+
+.container .mainArea .left .bottom {
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.container .mainArea .left .bottom button {
+  padding: 2.5px 10px;
+  border-radius: 2.5px;
+  background-color: var(--green);
+  color: white;
+  margin: 0px 5px;
+}
+
+.container .mainArea .left .bottom button:hover {
+  transition: 0.2s ease;
+  background-color: rgba(5, 148, 100, 0.967);
+}
+
+.container .mainArea .right {
+  width: 18%;
+  background-color: var(--whitish);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2.5px;
+}
+
+.container .mainArea .right button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(229, 229, 229);
+  margin-top: 10px;
+  width: 90%;
+  padding: 5px 0px;
+  border-radius: 5px;
+  font-size: 85%;
+}
+
+.container .mainArea .right button:hover {
+  transition: 0.2s ease;
+
+  background-color: lightgray;
+}
+
+.container .mainArea .right button.active {
+  transition: 0.2s ease;
+  color: var(--green);
+}
+
+.container .mainArea .right button .icon {
+  margin-right: 5px;
+}

@@ -1,0 +1,118 @@
+.account {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  padding: 10px;
+  background-color: #eeeeee;
+  cursor: pointer;
+  /* for the whole menu - disable */
+  pointer-events: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.account h3 {
+  color: black;
+  font-weight: bolder;
+}
+
+.account .accountContainer {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 15px;
+  height: auto;
+  width: 300px;
+  margin: 5px;
+  overflow: auto;
+  pointer-events: none;
+}
+
+.account .accountContainer .inspect {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.account .accountContainer .inspect a:hover {
+  background-color: #ececec;
+}
+
+.account .accountContainer .inspect a img {
+  object-fit: cover;
+}
+
+.account .accountContainer .inspect .infor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  pointer-events: all;
+  text-decoration: none;
+}
+
+.account .accountContainer .inspect .infor img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.account .accountContainer .inspect .infor p {
+  width: calc(100% - 65px);
+  text-align: left;
+  font-family: "Bold";
+}
+
+.account .accountContainer .inspect a:nth-child(3) {
+  pointer-events: all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 0px;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-family: "Bold";
+  background-color: #ececec;
+}
+
+.account .accountContainer .inspect a:nth-child(3):hover {
+  background-color: #c3c3c3;
+}
+
+.account .accountContainer .inspect a:nth-child(3) .icon {
+  margin-right: 5px;
+}
+
+.account .accountContainer .accountButtons .accountButton {
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+}
+
+.account .accountContainer .accountButtons .accountButton:hover {
+  background-color: #ececec;
+}
+
+.account .accountContainer .accountButtons .accountButton .icon {
+  margin-right: 5px;
+}
+
+.account .accountContainer .mark {
+  margin-top: 20px;
+  font-size: 80%;
+  color: grey;
+}
