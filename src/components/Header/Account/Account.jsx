@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import AccountBuilder from "./AccountBuilder";
 import PropTypes from "prop-types";
+import { handleLogout } from "../../../util/auth";
 
 const getYear = () => {
   const currentData = new Date();
@@ -16,11 +17,14 @@ export default function Account({ headerInfor }) {
       <div className={styles.accountContainer}>
         <div className={styles.inspect}>
           <Link to={"/wall"} className={styles.infor}>
-            <img src={headerInfor.avatar} alt="" />
+            <img
+              src={`http://localhost:8080${headerInfor.avatarSource}`}
+              alt=""
+            />
             <p>{headerInfor.name}</p>
           </Link>
           <hr />
-          <Link to={"/"} onClick={(e) => e.stopPropagation()}>
+          <Link onClick={handleLogout}>
             <MdLogout className={styles.icon} /> Log out
           </Link>
         </div>
@@ -44,8 +48,5 @@ export default function Account({ headerInfor }) {
 }
 
 Account.propTypes = {
-  headerInfor: PropTypes.shape({
-    avatar: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
+  headerInfor: PropTypes.object.isRequired,
 };

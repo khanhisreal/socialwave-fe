@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaCameraRetro, FaImages } from "react-icons/fa";
 import styles from "./PersonalWall.module.css";
 import Modal from "./Modal/Modal";
 import Grid from "./Posts/Grid";
 import Footer from "../../components/Footer/Footer";
-import api from "../../api/api";
+import { useUser } from "../../store/UserContext";
 
 export default function PersonalWall() {
-  const [userData, setUserData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageSrc, setModalImageSrc] = useState("");
   const [modalCaption, setModalCaption] = useState("");
+  const { user } = useUser();
 
   function openModal(src, alt) {
     setModalImageSrc(src);
@@ -22,23 +22,9 @@ export default function PersonalWall() {
     setIsModalOpen(false);
   };
 
-  // fetch data here, only happens at load time
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await api.get("/api/users/1");
-        setUserData(response.data);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   const userAvatar =
-    userData.avatarSource !== null
-      ? `http://localhost:8080${userData.avatarSource}`
+    user.avatarSource !== null
+      ? `http://localhost:8080${user.avatarSource}`
       : "./user_avatar_placeholder.jpg";
 
   return (
@@ -51,7 +37,7 @@ export default function PersonalWall() {
             id={styles.myImg}
             src={userAvatar}
             alt="User Avatar"
-            onClick={() => openModal(userAvatar, `${userData.name}`)}
+            onClick={() => openModal(userAvatar, `${user.name}`)}
           />
           <a href="#" className={styles.addAvatar}>
             <FaCameraRetro className={styles.avatarLogo} />
@@ -77,19 +63,19 @@ export default function PersonalWall() {
         <div className={styles.children}>
           <div className={styles.child}>
             <h1>Followers</h1>
-            <p>{userData.followerCount}</p>
+            <p>{user.followerCount}</p>
           </div>
           <div className={styles.child}>
-            <h1>{userData.name}</h1>
-            <p>{userData.userName}</p>
+            <h1>{user.name}</h1>
+            <p>{user.userName}</p>
           </div>
           <div className={styles.child}>
             <h1>Following</h1>
-            <p>{userData.followingCount}</p>
+            <p>{user.followingCount}</p>
           </div>
         </div>
         <div className={styles.bio}>
-          <p>{userData.bio}</p>
+          <p>{user.bio}</p>
         </div>
       </div>
       <div className={styles.buttons}>

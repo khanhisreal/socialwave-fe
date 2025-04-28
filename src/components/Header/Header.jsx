@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdApps, MdMessage } from "react-icons/md";
 import { FaBell } from "react-icons/fa";
@@ -9,40 +9,18 @@ import Message from "./Message/Message";
 import Notification from "./Notification/Notification";
 import Account from "./Account/Account";
 import styles from "./Header.module.css";
-import api from "../../api/api";
 //indicator data for unread message/notification
 import indicator from "./Indicator";
+import { useUser } from "../../store/UserContext";
 
 export default function Header() {
   const [data, setData] = useState("");
-  const [headerInfor, setHeaderInfor] = useState({});
+  const { user } = useUser();
 
   function assignData(value) {
     //if the value is the same as the current data, set data to null
     setData((prevData) => (prevData === value ? null : value));
   }
-
-  // fetch the avatar
-  useEffect(() => {
-    const fetchAvatar = async () => {
-      try {
-        const response = await api.get("http://localhost:8080/api/users/1");
-        const userAvatar =
-          response.data.avatarSource !== null
-            ? response.data.avatarSource
-            : "./user_avatar_placeholder.jpg";
-
-        setHeaderInfor({
-          avatar: `http://localhost:8080${userAvatar}`,
-          name: response.data.name,
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchAvatar();
-  }, []);
 
   return (
     <div className={styles.container}>
@@ -101,8 +79,8 @@ export default function Header() {
           // This shit is a prop, don't try to change it to module css!
           buttonClass={"accountParent"}
         >
-          <img src={headerInfor.avatar} alt="" />
-          {data === "account" && <Account headerInfor={headerInfor} />}
+          <img src={`http://localhost:8080${user.avatarSource}`} alt="" />
+          {data === "account" && <Account headerInfor={user} />}
         </HeaderIconBuilder>
       </div>
     </div>

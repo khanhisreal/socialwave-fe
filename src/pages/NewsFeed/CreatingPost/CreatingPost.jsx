@@ -1,35 +1,19 @@
 import { Link } from "react-router-dom";
 import { IoGrid } from "react-icons/io5";
 import { FaThList } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./CreatingPost.module.css";
 import FileUploader from "../../../components/FileUploader/FileUploader";
-import api from "../../../api/api";
+import { useUser } from "../../../store/UserContext";
 
 export default function CreatingPost({ handleLayout, layout }) {
   const [showModal, setShowModal] = useState(false);
-  const [userData, setUserData] = useState({});
-
-  useEffect(() => {
-    const fetchAvatar = async () => {
-      try {
-        const response = await api.get("/api/users/1");
-        setUserData({
-          name: response.data.name,
-          avatar: response.data.avatarSource,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchAvatar();
-  }, []);
+  const { user } = useUser();
 
   const userAvatar =
-    userData.avatar !== null
-      ? userData.avatar
+    user.avatarSource !== null
+      ? user.avatarSource
       : "./user_avatar_placeholder.jpg";
 
   return (
@@ -46,7 +30,7 @@ export default function CreatingPost({ handleLayout, layout }) {
               </Link>
             </span>
             <button onClick={() => setShowModal(true)}>
-              What&apos;s on your mind, {userData.name}?
+              What&apos;s on your mind, {user.name}?
             </button>
           </div>
           <div className={styles.bottom}>

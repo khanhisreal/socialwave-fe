@@ -3,6 +3,7 @@ import styles from "./Authentication.module.css";
 import AuthForm from "./AuthForm";
 import api from "../../api/api";
 import { redirect } from "react-router-dom";
+import { getAuthToken, setAuthToken } from "../../util/auth";
 
 export default function AuthenticationPage() {
   const [fieldIsValid, setFieldIsValid] = useState({
@@ -114,7 +115,7 @@ export default function AuthenticationPage() {
   const checkUsernameExists = async (username) => {
     try {
       const response = await api.get(
-        `http://localhost:8080/api/users/track?username=${username}`,
+        `http://localhost:8080/api/auth/track?username=${username}`,
       );
 
       return response.data; // Expecting a boolean
@@ -177,9 +178,6 @@ export default function AuthenticationPage() {
 
   // Check if all fields are valid
   const isFormValid =
-    fieldCount.name.trim() !== "" &&
-    fieldCount.username.trim() !== "" &&
-    fieldCount.password.trim() !== "" &&
     fieldIsValid.name.bool &&
     fieldIsValid.username.bool &&
     fieldIsValid.password.bool;
@@ -215,17 +213,24 @@ export async function action({ request }) {
 
   try {
     const response = await api.post(
-      "http://localhost:8080/api/users/" + mode,
+      "http://localhost:8080/api/auth/" + mode,
       data,
     );
-
-    console.log(response);
 
     if (mode === "signup") {
       return redirect(`?mode=${"login"}`);
     }
 
-    //soon: manage token
+    //manage token
+    const token = response.data.accessToken;
+
+    //token is valid for 60 days
+    if (token) {
+      setAuthToken(token, 60);
+    } else {
+      console.error("No token found in response");
+    }
+
     return redirect("/newsfeed");
   } catch (error) {
     //this return data to the AuthForm

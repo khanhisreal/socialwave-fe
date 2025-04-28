@@ -109,7 +109,9 @@
   display: block;
   border-radius: 0%;
   width: 100%;
+  max-height: 75%;
   max-width: 400px;
+  object-fit: cover;
   /* Remove any hover effects */
   pointer-events: none;
 }

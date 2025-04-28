@@ -26,11 +26,6 @@ const AuthForm = ({
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
-  useEffect(() => {
-    console.log("received error");
-    console.log(data);
-  }, [data]);
-
   return (
     <div className={styles.authContainer}>
       <div className={styles.authBackground}>
@@ -52,7 +47,11 @@ const AuthForm = ({
           <h2>SocialWave</h2>
         </div>
         <h2>{isLogin ? "Log In" : "Sign Up"}</h2>
-        <Form method="post" className={styles.form}>
+        <Form
+          method="post"
+          className={styles.form}
+          encType="multipart/form-data"
+        >
           {!isLogin && (
             <input
               type="text"
@@ -135,10 +134,13 @@ const AuthForm = ({
           {isLogin && data && (
             <p className={styles.error}>{data.response.data}</p>
           )}
+          {!isFormValid && !isLogin && (
+            <p className={styles.error}>Fix your data to submit the form</p>
+          )}
           <button
             type="submit"
-            className={styles.button}
-            disabled={(!isFormValid && !isLogin) || isSubmitting}
+            className={`${styles.button}  ${!isFormValid && !isLogin ? styles.disabledButton : undefined}`}
+            disabled={isSubmitting || (!isFormValid && !isLogin)}
           >
             {isSubmitting ? "Submitting..." : isLogin ? "Sign In" : "Sign Up"}
           </button>
@@ -180,5 +182,5 @@ AuthForm.propTypes = {
     password: PropTypes.string.isRequired,
   }).isRequired,
   setFieldCount: PropTypes.func.isRequired,
-  isFormValid: PropTypes.func.isRequired,
+  isFormValid: PropTypes.bool.isRequired,
 };

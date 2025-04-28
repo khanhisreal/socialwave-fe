@@ -4,28 +4,14 @@ import { FaUserFriends, FaBookmark, FaPenAlt } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 import { FaUserClock } from "react-icons/fa6";
 import { IoDiamondOutline } from "react-icons/io5";
-import { useEffect, useState } from "react";
-import api from "../../api/api";
+import { useUser } from "../../store/UserContext";
 
 export default function SideBar() {
-  const [userData, setUserData] = useState({});
-
-  useEffect(() => {
-    const fetchAvatar = async () => {
-      try {
-        const response = await api.get("http://localhost:8080/api/users/1");
-        setUserData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchAvatar();
-  }, []);
+  const { user } = useUser();
 
   const userAvatar =
-    userData.avatarSource !== null
-      ? userData.avatarSource
+    user.avatarSource !== null
+      ? user.avatarSource
       : "./user_avatar_placeholder.jpg";
 
   return (
@@ -35,7 +21,7 @@ export default function SideBar() {
           <div className={styles.illustration}>
             <img src={`http://localhost:8080${userAvatar}`} alt="" />
           </div>
-          <p>{userData.name}</p>
+          <p>{user.name}</p>
         </Link>
         <Link>
           <div className={styles.illustration}>
