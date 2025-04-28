@@ -3,7 +3,7 @@ import styles from "./Authentication.module.css";
 import AuthForm from "./AuthForm";
 import api from "../../api/api";
 import { redirect } from "react-router-dom";
-import { getAuthToken, setAuthToken } from "../../util/auth";
+import { setAuthToken } from "../../util/auth";
 
 export default function AuthenticationPage() {
   const [fieldIsValid, setFieldIsValid] = useState({
