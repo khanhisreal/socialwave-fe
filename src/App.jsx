@@ -3,9 +3,10 @@ import Root from "./pages/Root";
 import PersonalWall from "./pages/PersonalWall/PersonalWall";
 import NewsFeed from "./pages/NewsFeed/NewsFeed";
 import ErrorPage from "./pages/Error/ErrorPage";
-import AuthenticationPage, {
-  action as authAction,
-} from "./pages/Authentication/Authentication";
+import { action as authAction } from "./pages/Authentication/Authentication";
+import RequireAuth from "./pages/RequireAuth";
+import UserContextProvider from "./store/UserContext";
+import AuthRedirect from "./pages/AuthRedirect";
 
 const router = createBrowserRouter([
   {
@@ -13,15 +14,24 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <AuthenticationPage />, action: authAction },
-      { path: "newsfeed", element: <NewsFeed /> },
-      { path: "wall", element: <PersonalWall /> },
+      { index: true, element: <AuthRedirect />, action: authAction },
+      {
+        element: <RequireAuth />,
+        children: [
+          { path: "newsfeed", element: <NewsFeed /> },
+          { path: "wall", element: <PersonalWall /> },
+        ],
+      },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <UserContextProvider>
+      <RouterProvider router={router} />
+    </UserContextProvider>
+  );
 }
 
 export default App;

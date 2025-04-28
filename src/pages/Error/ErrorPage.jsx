@@ -1,8 +1,16 @@
 import Header from "../../components/Header/Header";
+import { getAuthToken } from "../../util/auth";
 import styles from "./ErrorPage.module.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 
 export default function ErrorPage() {
+  const token = getAuthToken();
+  const location = useLocation();
+
+  if (!token && location.pathname !== "/") {
+    return <Navigate to={"/"} replace />;
+  }
+
   return (
     <div className={styles.container}>
       <Header />
