@@ -1,8 +1,8 @@
 import styles from "./List.module.css";
-import posts from "./data";
 import PostBuilder from "./PostBuilder";
+import PropTypes from "prop-types";
 
-export default function List() {
+export default function List({ posts }) {
   return (
     <div className={styles.container}>
       {posts.map((post) => (
@@ -11,3 +11,12 @@ export default function List() {
     </div>
   );
 }
+
+List.propTypes = {
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      postId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
+    }),
+  ).isRequired,
+};

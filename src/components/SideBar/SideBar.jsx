@@ -11,7 +11,7 @@ export default function SideBar() {
 
   const userAvatar =
     user.avatarSource !== null
-      ? user.avatarSource
+      ? `http://localhost:8080${user.avatarSource}`
       : "./user_avatar_placeholder.jpg";
 
   return (
@@ -19,7 +19,7 @@ export default function SideBar() {
       <div className={styles.wrapper}>
         <Link to="/wall">
           <div className={styles.illustration}>
-            <img src={`http://localhost:8080${userAvatar}`} alt="" />
+            <img src={userAvatar} alt="" />
           </div>
           <p>{user.name}</p>
         </Link>

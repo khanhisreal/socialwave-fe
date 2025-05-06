@@ -7,6 +7,7 @@ import { action as authAction } from "./pages/Authentication/Authentication";
 import RequireAuth from "./pages/RequireAuth";
 import UserContextProvider from "./store/UserContext";
 import AuthRedirect from "./pages/AuthRedirect";
+import { useLoader } from "./util/useLoader";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,8 @@ const router = createBrowserRouter([
       {
         element: <RequireAuth />,
         children: [
-          { path: "newsfeed", element: <NewsFeed /> },
-          { path: "wall", element: <PersonalWall /> },
+          { path: "newsfeed", element: <NewsFeed />, loader: useLoader },
+          { path: "wall", element: <PersonalWall />, loader: useLoader },
         ],
       },
     ],

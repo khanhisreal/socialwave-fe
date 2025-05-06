@@ -4,6 +4,7 @@ import { MdLogout } from "react-icons/md";
 import AccountBuilder from "./AccountBuilder";
 import PropTypes from "prop-types";
 import { handleLogout } from "../../../util/auth";
+import { useUser } from "../../../store/UserContext";
 
 const getYear = () => {
   const currentData = new Date();
@@ -11,16 +12,20 @@ const getYear = () => {
 };
 
 export default function Account({ headerInfor }) {
+  const { user } = useUser();
+
+  const userAvatar =
+    user.avatarSource !== null
+      ? `http://localhost:8080${user.avatarSource}`
+      : "./user_avatar_placeholder.jpg";
+
   return (
     <div className={styles.account}>
       <h3>Account</h3>
       <div className={styles.accountContainer}>
         <div className={styles.inspect}>
           <Link to={"/wall"} className={styles.infor}>
-            <img
-              src={`http://localhost:8080${headerInfor.avatarSource}`}
-              alt=""
-            />
+            <img src={userAvatar} alt="" />
             <p>{headerInfor.name}</p>
           </Link>
           <hr />

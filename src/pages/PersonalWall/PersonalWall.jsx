@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaCameraRetro, FaImages } from "react-icons/fa";
 import styles from "./PersonalWall.module.css";
 import Modal from "./Modal/Modal";
 import Grid from "./Posts/Grid";
 import Footer from "../../components/Footer/Footer";
 import { useUser } from "../../store/UserContext";
+import { useLoaderData } from "react-router-dom";
 
 export default function PersonalWall() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageSrc, setModalImageSrc] = useState("");
   const [modalCaption, setModalCaption] = useState("");
   const { user } = useUser();
+  const loaderUser = useLoaderData();
+  const { setUser } = useUser();
+
+  useEffect(() => {
+    setUser(loaderUser);
+  }, [loaderUser, setUser]);
 
   function openModal(src, alt) {
     setModalImageSrc(src);
@@ -83,7 +90,7 @@ export default function PersonalWall() {
         <a href="#">View archive</a>
       </div>
       <div className={styles.posts}>
-        <Grid />
+        {user.userId ? <Grid user={user} /> : <p>Loading profile data...</p>}
       </div>
       <Footer />
     </div>
