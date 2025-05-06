@@ -22,6 +22,11 @@ export default function Header() {
     setData((prevData) => (prevData === value ? null : value));
   }
 
+  const userAvatar =
+    user.avatarSource !== null
+      ? `http://localhost:8080${user.avatarSource}`
+      : "./user_avatar_placeholder.jpg";
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -79,7 +84,7 @@ export default function Header() {
           // This shit is a prop, don't try to change it to module css!
           buttonClass={"accountParent"}
         >
-          <img src={`http://localhost:8080${user.avatarSource}`} alt="" />
+          <img src={userAvatar} alt="" />
           {data === "account" && <Account headerInfor={user} />}
         </HeaderIconBuilder>
       </div>

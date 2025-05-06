@@ -13,7 +13,7 @@ export default function UserContextProvider({ children }) {
   );
 }
 
-//custom hook to use the UserContext
+//custom hook to access the context
 export function useUser() {
   return useContext(UserContext);
 }

@@ -7,13 +7,17 @@ import styles from "./CreatingPost.module.css";
 import FileUploader from "../../../components/FileUploader/FileUploader";
 import { useUser } from "../../../store/UserContext";
 
-export default function CreatingPost({ handleLayout, layout }) {
+export default function CreatingPost({
+  handleLayout,
+  layout,
+  onUploadSuccess,
+}) {
   const [showModal, setShowModal] = useState(false);
   const { user } = useUser();
 
   const userAvatar =
     user.avatarSource !== null
-      ? user.avatarSource
+      ? `http://localhost:8080${user.avatarSource}`
       : "./user_avatar_placeholder.jpg";
 
   return (
@@ -23,13 +27,14 @@ export default function CreatingPost({ handleLayout, layout }) {
           <div className={styles.top}>
             <span>
               <Link to={"/wall"}>
-                <img
-                  src={`http://localhost:8080${userAvatar}`}
-                  alt="user avatar"
-                />
+                <img src={userAvatar} alt="user avatar" />
               </Link>
             </span>
-            <button onClick={() => setShowModal(true)}>
+            <button
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
               What&apos;s on your mind, {user.name}?
             </button>
           </div>
@@ -54,7 +59,12 @@ export default function CreatingPost({ handleLayout, layout }) {
           </button>
         </div>
       </div>
-      {showModal && <FileUploader handleShowModal={setShowModal} />}
+      {showModal && (
+        <FileUploader
+          handleShowModal={setShowModal}
+          onUploadSuccess={onUploadSuccess}
+        />
+      )}
     </div>
   );
 }
@@ -62,4 +72,5 @@ export default function CreatingPost({ handleLayout, layout }) {
 CreatingPost.propTypes = {
   handleLayout: PropTypes.func.isRequired,
   layout: PropTypes.string.isRequired,
+  onUploadSuccess: PropTypes.func,
 };

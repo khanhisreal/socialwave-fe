@@ -9,8 +9,11 @@ export default function PostBuilder({ post }) {
     <div className={styles.post}>
       <div className={styles.top}>
         <div className={styles.content}>
-          <img src={post.user[0].avatarImageSource} alt="" />
-          <p>{post.user[0].userName}</p>
+          <img
+            src={`http://localhost:8080${post.userPostDTO.avatarSource}`}
+            alt=""
+          />
+          <p>{post.userPostDTO.userName}</p>
           <button>Follow</button>
         </div>
         <div className={styles.optionButton}>
@@ -21,13 +24,13 @@ export default function PostBuilder({ post }) {
       </div>
       <div className={styles.content}>
         <div className={styles.image}>
-          <img src={post.imageSource} alt="" />
+          <img src={`http://localhost:8080${post.imageSource}`} alt="" />
         </div>
         <div className={styles.likeCount}>
           {post.likeCount} like{post.likeCount !== 1 && "s"}
         </div>
         <div className={styles.caption}>
-          <span>{post.user[0].userName}</span>
+          <span>{post.userPostDTO.userName}</span>
           {post.caption}
         </div>
       </div>
@@ -50,14 +53,12 @@ export default function PostBuilder({ post }) {
 
 PostBuilder.propTypes = {
   post: PropTypes.shape({
-    user: PropTypes.arrayOf(
-      PropTypes.shape({
-        avatarImageSource: PropTypes.string.isRequired,
-        userName: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
     imageSource: PropTypes.string.isRequired,
     likeCount: PropTypes.number.isRequired,
     caption: PropTypes.string.isRequired,
+    userPostDTO: PropTypes.shape({
+      userName: PropTypes.string.isRequired,
+      avatarSource: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };

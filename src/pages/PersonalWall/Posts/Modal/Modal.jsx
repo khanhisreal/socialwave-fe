@@ -1,28 +1,31 @@
 import { useEffect, useState } from "react";
 import styles from "./Modal.module.css";
 import PropTypes from "prop-types";
-import fetchPosts from "../data";
 import Comment from "./Comment";
 import Bottom from "./Bottom";
+import api from "../../../../api/api";
 
 export default function Modal({
   toggleModal,
   fetchPost,
-  getPostId,
   performActionIsHidden,
 }) {
-  //hold the relavent post data
-  const [modalData, setModalData] = useState("");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
-    fetchPosts().then((data) => {
-      const selectedPost = data.find((item) => item.id === fetchPost.id);
-      setModalData(selectedPost);
-      if (selectedPost) {
-        getPostId(selectedPost);
+    if (!fetchPost || !fetchPost.userId) return;
+
+    const fetchUser = async () => {
+      try {
+        const response = await api.get(`/api/users/${fetchPost.userId}`);
+        setUser(response.data);
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
       }
-    });
-  }, [fetchPost?.id, getPostId]);
+    };
+
+    fetchUser();
+  }, [fetchPost]);
 
   const button = (
     <button className={styles.close} onClick={() => toggleModal()}>
@@ -40,20 +43,24 @@ export default function Modal({
     <div className={styles.overlay}>
       <div className={styles.container}>
         <div className={styles.left}>
-          <img src={modalData.image} alt="" />
+          <img src={`http://localhost:8080${fetchPost.imageSource}`} alt="" />
         </div>
         <div className={styles.right}>
           <div className={styles.top}>
             <div className={styles.content}>
-              <img src="/dummy_avatar.png" alt="" className={styles.avatar} />
+              <img
+                src={`http://localhost:8080${user.avatarSource}`}
+                alt=""
+                className={styles.avatar}
+              />
               <p className={styles.caption}>
-                <span>{modalData.username}</span> {modalData.caption}
+                <span>{user.userName}</span> {fetchPost.caption}
               </p>
             </div>
             <div className={styles.commentSection}>
               <h3>Comments</h3>
-              {modalData.comments && modalData.comments.length > 0 ? (
-                modalData.comments.map((comment) => (
+              {fetchPost.comments && fetchPost.comments.length > 0 ? (
+                fetchPost.comments.map((comment) => (
                   <Comment
                     key={comment.id}
                     commentAvatar={comment.avatar}
@@ -68,7 +75,7 @@ export default function Modal({
             </div>
           </div>
           <div className={styles.bottom}>
-            <Bottom likeCount={modalData.likes} />
+            <Bottom likeCount={fetchPost.likeCount} />
           </div>
         </div>
         {button}
@@ -81,6 +88,6 @@ export default function Modal({
 Modal.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   fetchPost: PropTypes.object,
-  getPostId: PropTypes.func.isRequired,
+  getPostId: PropTypes.func,
   performActionIsHidden: PropTypes.func,
 };

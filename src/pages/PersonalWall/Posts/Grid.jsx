@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "./Grid.module.css";
-import fetchPosts from "./data";
 import Pagination from "../../../components/Pagination/Pagination";
 import Modal from "./Modal/Modal";
 import ActionButton from "./Modal/ActionButton";
+import api from "../../../api/api";
+import PropTypes from "prop-types";
 
-export default function Grid() {
+export default function Grid({ user }) {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,28 +15,48 @@ export default function Grid() {
   const [modalDisplay, setModalDisplay] = useState(false);
   const [post, setPost] = useState();
   const [actionIsHidden, setActionIsHidden] = useState(true);
-  const [postId, setPostId] = useState();
 
   function handleModalDisplay(post) {
     setModalDisplay((prevState) => !prevState);
     setPost(post);
   }
 
-  function handlePostId(id) {
-    setPostId(id);
-  }
-
   function handleActionIsHidden() {
     setActionIsHidden((prevState) => !prevState);
   }
 
-  //simulate an API call
+  //filter out the deleted posts
+  function handlePostDeleted(deleteId) {
+    setPosts((prevPosts) =>
+      prevPosts.filter((post) => post.postId !== deleteId),
+    );
+    setModalDisplay(false);
+  }
+
+  function handleCaptionUpdated(postId, newCaption) {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) =>
+        post.postId === postId ? { ...post, caption: newCaption } : post,
+      ),
+    );
+
+    setPost((prevPost) =>
+      prevPost && prevPost.postId === postId
+        ? { ...prevPost, caption: newCaption }
+        : prevPost,
+    );
+  }
+
+  //fetch posts from db
   useEffect(() => {
-    fetchPosts().then((data) => {
-      setPosts(data.map(({ id, image }) => ({ id, image })));
+    const fetchPosts = async () => {
+      const response = await api.get(`/api/posts/${user.userId}`);
       setIsLoading(false);
-    });
-  }, []);
+      setPosts(response.data);
+    };
+
+    fetchPosts();
+  }, [user]);
 
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
@@ -45,18 +66,27 @@ export default function Grid() {
     <a
       onClick={() => handleModalDisplay(post)}
       className={styles.post}
-      key={post.id}
+      key={post.postId}
     >
-      <img src={post.image} alt="" />
+      <img
+        src={`http://localhost:8080${post.imageSource}`}
+        alt={`Post by ${user.name}`}
+      />
     </a>
   ));
 
   return (
     <div className={styles.container}>
       <div className={styles.postContainer}>
-        {/* this takes some time to finish  */}
         {isLoading && <p>Loading posts...</p>}
-        {!isLoading && list}
+        {!isLoading && posts.length === 0 && (
+          <div className={styles.noPosts}>
+            <p>You don&apos;t have any photos</p>
+            <p>Please add some photos to your account</p>
+          </div>
+        )}
+
+        {!isLoading && posts.length > 0 && list}
       </div>
       <Pagination
         totalPosts={posts.length}
@@ -69,16 +99,26 @@ export default function Grid() {
         <Modal
           toggleModal={handleModalDisplay}
           fetchPost={post}
-          getPostId={handlePostId}
           performActionIsHidden={handleActionIsHidden}
         />
       )}
-      {!actionIsHidden && (
+      {!actionIsHidden && post && (
         <ActionButton
           performActionIsHidden={handleActionIsHidden}
-          postId={postId}
+          actionId={post.postId}
+          post={post}
+          onPostDeleted={handlePostDeleted}
+          setModalDisplay={setModalDisplay}
+          onCaptionUpdated={handleCaptionUpdated}
         />
       )}
     </div>
   );
 }
+
+Grid.propTypes = {
+  user: PropTypes.shape({
+    userId: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};

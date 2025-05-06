@@ -4,6 +4,8 @@ import EmojiPicker from "emoji-picker-react";
 import styles from "./FileUploader.module.css";
 import PropTypes from "prop-types";
 import api from "../../api/api";
+import { getAuthToken } from "../../util/auth";
+import { useUser } from "../../store/UserContext";
 
 const UploadStatus = {
   IDLE: "IDLE",
@@ -12,12 +14,13 @@ const UploadStatus = {
   ERROR: "ERROR",
 };
 
-export default function FileUploader({ handleShowModal }) {
+export default function FileUploader({ handleShowModal, onUploadSuccess }) {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState(UploadStatus.IDLE);
   const [previewURL, setPreviewURL] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [inputStr, setInputStr] = useState("");
+  const { user } = useUser();
 
   const onEmojiClick = (emojiObject) => {
     console.log(emojiObject.data);
@@ -29,6 +32,13 @@ export default function FileUploader({ handleShowModal }) {
     if (e.target.files) {
       // access the first file in the array of files
       const newFile = e.target.files[0];
+      const maxSize = 4 * 1024 * 1024; //4MB
+
+      if (newFile.size > maxSize) {
+        alert("File size exceeds the 4MB limit.");
+        return;
+      }
+
       setFile(newFile);
       setPreviewURL(URL.createObjectURL(newFile));
     }
@@ -43,14 +53,6 @@ export default function FileUploader({ handleShowModal }) {
     };
   }, [previewURL]);
 
-  // log the file and its type - testing purpose
-  useEffect(() => {
-    if (file) {
-      console.log(file);
-      console.log("Type of file: " + typeof file);
-    }
-  }, [file]);
-
   function handleFileUpload() {
     // if we don't have a file, don't execute the rest
     if (!file) {
@@ -59,23 +61,32 @@ export default function FileUploader({ handleShowModal }) {
 
     setStatus(UploadStatus.UPLOADING);
 
-    // create a new FormData object
+    // prepare a formData object to save the file and its caption
     const formData = new FormData();
-    // append the file to the formData object
     formData.append("file", file);
+    formData.append("caption", inputStr);
+    formData.append("userId", user.userId);
+
+    const token = getAuthToken();
+
+    if (!token) {
+      alert("You are not logged in!");
+      return;
+    }
 
     const fetchFileUpload = async () => {
       try {
-        await api.post("/api/posts/upload", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        await api.post("/api/posts/upload", formData);
 
         setStatus(UploadStatus.SUCCESS);
+        handleShowModal(false);
+
+        if (onUploadSuccess) {
+          onUploadSuccess();
+        }
       } catch (error) {
         setStatus(UploadStatus.ERROR);
-        alert(error);
+        console.log(error);
       }
     };
 
@@ -104,7 +115,9 @@ export default function FileUploader({ handleShowModal }) {
   );
 
   const uploadedImg = (
-    <img src={previewURL} className={styles.uploadImg} alt="Uploaded image" />
+    <div className={styles.imgContainer}>
+      <img src={previewURL} className={styles.uploadImg} alt="Uploaded image" />
+    </div>
   );
 
   return (
@@ -157,4 +170,5 @@ export default function FileUploader({ handleShowModal }) {
 
 FileUploader.propTypes = {
   handleShowModal: PropTypes.func,
+  onUploadSuccess: PropTypes.func,
 };
